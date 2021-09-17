@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Gold's Health",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

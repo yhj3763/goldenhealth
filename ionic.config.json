@@ -1,0 +1,7 @@
+{
+  "name": "Gold's Health",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
