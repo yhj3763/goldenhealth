@@ -11,6 +11,26 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'bmi',
+    loadChildren: () => import('./pages/bmi/bmi.module').then( m => m.BmiPageModule)
+  },
+  {
+    path: 'rate-pressure',
+    loadChildren: () => import('./pages/rate-pressure/rate-pressure.module').then( m => m.RatePressurePageModule)
+  },
+  {
+    path: 'sleep',
+    loadChildren: () => import('./pages/sleep/sleep.module').then( m => m.SleepPageModule)
+  },
+  {
+    path: 'activity',
+    loadChildren: () => import('./pages/activity/activity.module').then( m => m.ActivityPageModule)
+  },
+  {
+    path: 'diet',
+    loadChildren: () => import('./pages/diet/diet.module').then( m => m.DietPageModule)
+  },
 ];
 
 @NgModule({
