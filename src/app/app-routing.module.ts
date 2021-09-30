@@ -20,10 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/rate-pressure/rate-pressure.module').then( m => m.RatePressurePageModule)
   },
   {
-    path: 'sleep',
-    loadChildren: () => import('./pages/sleep/sleep.module').then( m => m.SleepPageModule)
-  },
-  {
     path: 'activity',
     loadChildren: () => import('./pages/activity/activity.module').then( m => m.ActivityPageModule)
   },
