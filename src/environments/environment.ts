@@ -4,6 +4,15 @@
 
 export const environment = {
   production: false
+  //this is my firebase api key 
+  firebase : {
+  apiKey: "AIzaSyCOwipmMTceh_zcOMlWFuP_nebUZcLlAJ8",
+  authDomain: "cse4550healthapp.firebaseapp.com",
+  projectId: "cse4550healthapp",
+  storageBucket: "cse4550healthapp.appspot.com",
+  messagingSenderId: "419622851461",
+  appId: "1:419622851461:web:dc00e44baab4d3f162aaec",
+  measurementId: "G-6FC5WJ626N"}
 };
 
 /*
