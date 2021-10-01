@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'diet',
     loadChildren: () => import('./pages/diet/diet.module').then( m => m.DietPageModule)
   },
+  {
+    path: 'home2',
+    loadChildren: () => import('./home2/home2.module').then( m => m.Home2PageModule)
+  },
 ];
 
 @NgModule({

@@ -17,7 +17,7 @@
   <ion-grid>
     <ion-row class="justify-content-center">
       <!-- <strong>The Great War Info</strong> -->
-        <ion-col size="12" size-md="10" size-lg="7">
+        <ion-col size="10" size-md="10" size-lg="7">
           <strong>Golden Health</strong> 
           <img src="../../assets/icon/IMG_4594.jpg.png" class="figure-img rounded" alt="...">
         </ion-col>
@@ -26,4 +26,24 @@
     </ion-row>
   </ion-grid>
   <br>
+
+  <ion-grid>
+    <ion-label>Sign-in</ion-label>
+  </ion-grid>
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-button (click)="btnClicked()" routerLink="/bmi">
+    Login-in Button !
+  </ion-button>
+  <ion-button (click)="btnClicked()" routerLink="/home2">
+    Sign-up !
+  </ion-button>
 </ion-content>
