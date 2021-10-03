@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -28,10 +28,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/diet/diet.module').then( m => m.DietPageModule)
   },
   //Jackie added for login signup 
-    {
-    path: '', //'' means it will open this fist
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
   {
     path: 'signup',//canredirect to signup
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
