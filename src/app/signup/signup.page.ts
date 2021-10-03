@@ -11,6 +11,9 @@ export class SignupPage implements OnInit {
   public email:any;
   public password:any;
   public name:any;
+  public weight:any;
+  public height:any;
+  public age:any;
   constructor(
     public router:Router,
     public fireService:FireserviceService
@@ -26,6 +29,9 @@ export class SignupPage implements OnInit {
           email:this.email,
           password:this.password,
           name:this.name,
+          weight:this.weight,
+          height:this.height,
+          age:this.age,
           uid:res.user.uid
         }
         this.fireService.saveDetails(data).then(res=>{
