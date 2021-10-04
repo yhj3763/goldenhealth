@@ -15,7 +15,7 @@
     <ion-item>
       <ion-label position="stacked">Password</ion-label>
       <ion-input [(ngModel)]='password' [type] = "getType()"></ion-input>
-      <ion-icon slot = "end" [name] = "passwordToggleIcon" (click ="togglePassword()"></ion-icon>
+      <ion-icon slot = "end" [name] = "passwordToggleIcon" (click)="togglePassword()"></ion-icon>
     </ion-item>
 
     <ion-button (click)='login()' expand='block'>Login</ion-button>
