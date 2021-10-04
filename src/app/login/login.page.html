@@ -23,6 +23,29 @@
 
     <h5 (click)='signup()'>Don't have account? <ion-text color='primary'>signup here</ion-text>
     </h5>
+    <br>
+    <div class="center">
+      <div class="input">
+          <p>Weight <input type='number' id='weight'/> LB</p>
+          <p>Height <input type='number' id='height'/> Meter</p>
+      </div>
+      <div class="button">
+          <button onClick='calculate()'>calculate</button>
+      </div>
+      <div class="result">
+          <h4> Your BMI: </h4> <h4 id="BMI"></h4>
+      </div>
+    </div>
     
+      <script>
+      function calculate() {
+        var weight = document.getElementById("weight").value;
+        var height = document.getElementById("height").value;
+        var kgweight = weight/2.205;
+        var BMI = kgweight/(height * height);
+        document.getElementById("BMI").innerHTML  = BMI.toFixed(2);
+
+      }
+      </script>
   </div>
 </ion-content>
