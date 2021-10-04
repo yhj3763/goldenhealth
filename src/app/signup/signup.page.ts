@@ -35,7 +35,9 @@ export class SignupPage implements OnInit {
           uid:res.user.uid
         }
         this.fireService.saveDetails(data).then(res=>{
-         alert('Account Created!');
+          alert('Account Created!'),
+          this.router.navigateByUrl('login');
+
         },err=>{
           console.log(err);
         })
