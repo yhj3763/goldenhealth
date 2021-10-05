@@ -1,32 +1,26 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>bmi</ion-title>
-    <ion-buttons slot="start">
-      <ion-menu-button menu="main-menu"></ion-menu-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <!-- Inputs with labels -->
-  <ion-item>
-    <ion-label>Default Label</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
+<ion-content class="ion-padding">
+  <div class="form">
 
-  <ion-item>
-    <ion-label position="floating">Floating Label</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="fixed">Fixed Label</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">Stacked Label</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
-
+    <ion-item>
+      <ion-label position="stacked">Weight: LB</ion-label>
+      <ion-input [(ngModel)]='weight'></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label position="stacked">Height: M</ion-label>
+      <ion-input [(ngModel)]='height'></ion-input>
+    </ion-item>
+    <ion-button (click)='calculate()' expand='block'>Generate My BMI</ion-button>
+    <br>
+    <div class="center">
+      <h3>Current BMI: </h3><h3 id = "mybmi"></h3>
+    </div>
+  </div>
 </ion-content>
+
