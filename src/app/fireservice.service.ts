@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/compat/auth"; //import authorcation
 import { AngularFirestore } from "@angular/fire/compat/firestore"; //import the firestore database
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FireserviceService {
 
