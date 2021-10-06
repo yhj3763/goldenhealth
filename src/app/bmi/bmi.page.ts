@@ -22,4 +22,3 @@ export class BmiPage implements OnInit {
     return myContainer.innerHTML = BMI;;
     }
 }
-

@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -27,9 +27,14 @@ const routes: Routes = [
     path: 'diet',
     loadChildren: () => import('./pages/diet/diet.module').then( m => m.DietPageModule)
   },
+  //Jackie added for login signup 
   {
-    path: 'home2',
-    loadChildren: () => import('./home2/home2.module').then( m => m.Home2PageModule)
+    path: 'signup',//canredirect to signup
+    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+  },
+  {
+    path: 'login',//redirect back to login // removeable if is useless
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
 ];
 
