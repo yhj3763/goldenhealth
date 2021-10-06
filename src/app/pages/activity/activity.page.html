@@ -8,5 +8,54 @@
 </ion-header>
 
 <ion-content>
+  <!-- <ion-item>
+    <ion-label>Activity Date</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+  </ion-item> -->
+
+  <ion-item>
+    <ion-label>Activity Date</ion-label>
+    <ion-datetime displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
+  </ion-item>
+
+  <!-- User input for workouts on selected day above -->
+
+  <ion-list lines="full" class="ion-no-margin">
+    <ion-list-header lines="full">
+      <ion-label>
+        Input Types
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Workout Name</ion-label>
+      <ion-input placeholder="placeholder" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label># of Sets</ion-label>
+      <ion-input placeholder="placeholder" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label># of Reps</ion-label>
+      <ion-input placeholder="placeholder" type="number"></ion-input>
+    </ion-item>
+
+    <!-- *****add time here!!!!***** -->
+
+    <ion-item>
+      <ion-label position="stacked">Notes</ion-label>
+      <ion-input placeholder="Here I improved on..."></ion-input>
+    </ion-item>
+  </ion-list>
+
+   <!-- Add a '+' button here to allow user to add another workoutt-->
+
+   <!-- <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
 
 </ion-content>
