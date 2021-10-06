@@ -31,6 +31,10 @@ const routes: Routes = [
     path: '',//redirect back to login // removeable if is useless
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'login',//redirect back to login // removeable if is useless
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
 ];
 
 @NgModule({
