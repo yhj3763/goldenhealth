@@ -7,11 +7,6 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
-  {
     path: 'bmi',
     loadChildren: () => import('./pages/bmi/bmi.module').then( m => m.BmiPageModule)
   },
@@ -33,7 +28,7 @@ const routes: Routes = [
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
   {
-    path: 'login',//redirect back to login // removeable if is useless
+    path: '',//redirect back to login // removeable if is useless
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
 ];
