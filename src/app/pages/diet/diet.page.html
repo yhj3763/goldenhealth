@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<>
+<ion-content>
 
   <!-- User input for food on selected day above -->
   <ion-item>
@@ -23,69 +23,77 @@
   <ion-list lines="full" class="ion-no-margin">
     <ion-list-header lines="full">
       <ion-label>
-        Food Period
+        Food Period: Lunch
       </ion-label>
     </ion-list-header>
 
     <!-- Have buttons that each display eating periods today:
     Such as, Breakfast, Dinner, After(and Before) Workout, and snacks, etc. -->
-    <ion-item>
-      <ion-label>Food Name</ion-label>
-      <ion-input placeholder="placeholder" type="text"></ion-input>
-    </ion-item>
+    <ion-card>
+      <ion-item>
+        <ion-label>Food Name</ion-label>
+        <ion-input placeholder="placeholder" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Brand</ion-label>
+        <ion-input placeholder="placeholder" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Calories</ion-label>
+        <ion-input placeholder="placeholder" type="number"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Protein</ion-label>
+        <ion-input placeholder="placeholder" type="number"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Carbs</ion-label>
+        <ion-input placeholder="placeholder" type="number"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Fat</ion-label>
+        <ion-input placeholder="placeholder" type="number"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Fiber</ion-label>
+        <ion-input placeholder="placeholder" type="number"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Sugar</ion-label>
+        <ion-input placeholder="placeholder" type="number"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Sodium</ion-label>
+        <ion-input placeholder="placeholder" type="number"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Cholesterol</ion-label>
+        <ion-input placeholder="placeholder" type="number"></ion-input>
+      </ion-item>
+  
+      <ion-button color="primary" position="center">Add</ion-button>
+    </ion-card>
+  </ion-list>
 
-    <ion-item>
-      <ion-label>Brand</ion-label>
-      <ion-input placeholder="placeholder" type="text"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Calories</ion-label>
-      <ion-input placeholder="placeholder" type="number"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Protein</ion-label>
-      <ion-input placeholder="placeholder" type="number"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Carbs</ion-label>
-      <ion-input placeholder="placeholder" type="number"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Fat</ion-label>
-      <ion-input placeholder="placeholder" type="number"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Fiber</ion-label>
-      <ion-input placeholder="placeholder" type="number"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Sugar</ion-label>
-      <ion-input placeholder="placeholder" type="number"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Sodium</ion-label>
-      <ion-input placeholder="placeholder" type="number"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Cholesterol</ion-label>
-      <ion-input placeholder="placeholder" type="number"></ion-input>
-    </ion-item>
+  <ion-list>
+    <ion-button expand="block">Add Food Period</ion-button>
   </ion-list>
 
   <!-- Have option here (a '+' sign) for food period and same options above -->
-  <ion-fab vertical="center" horizontal="center" slot="fixed">
+  <!-- <ion-fab vertical="center" horizontal="center" slot="fixed">
     <ion-fab-button>
       <ion-icon name="share"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab> -->
 
 
   <!-- Graph will displace directly bellow following code, preferably a Bar Graph -->
