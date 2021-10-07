@@ -17,7 +17,7 @@
 
   <ion-item>
     <ion-label position="floating">Targeted Calories</ion-label>
-    <ion-input type="number"></ion-input>
+    <ion-input [(ngModel)]= 'targetedCalories' type="number"></ion-input>
   </ion-item>
 
   <ion-list lines="full" class="ion-no-margin">
@@ -34,53 +34,53 @@
         <ion-label>Food Name</ion-label>
         <ion-input placeholder="placeholder" type="text"></ion-input>
       </ion-item>
-  
+
       <ion-item>
         <ion-label>Brand</ion-label>
         <ion-input placeholder="placeholder" type="text"></ion-input>
       </ion-item>
-  
+
       <ion-item>
         <ion-label>Calories</ion-label>
-        <ion-input placeholder="placeholder" type="number"></ion-input>
+        <ion-input [(ngModel)] = 'calories' type="number"></ion-input>
       </ion-item>
-  
+
       <ion-item>
         <ion-label>Protein</ion-label>
         <ion-input placeholder="placeholder" type="number"></ion-input>
       </ion-item>
-  
+
       <ion-item>
         <ion-label>Carbs</ion-label>
         <ion-input placeholder="placeholder" type="number"></ion-input>
       </ion-item>
-  
+
       <ion-item>
         <ion-label>Fat</ion-label>
         <ion-input placeholder="placeholder" type="number"></ion-input>
       </ion-item>
-  
+
       <ion-item>
         <ion-label>Fiber</ion-label>
         <ion-input placeholder="placeholder" type="number"></ion-input>
       </ion-item>
-  
+
       <ion-item>
         <ion-label>Sugar</ion-label>
         <ion-input placeholder="placeholder" type="number"></ion-input>
       </ion-item>
-  
+
       <ion-item>
         <ion-label>Sodium</ion-label>
         <ion-input placeholder="placeholder" type="number"></ion-input>
       </ion-item>
-  
+
       <ion-item>
         <ion-label>Cholesterol</ion-label>
         <ion-input placeholder="placeholder" type="number"></ion-input>
       </ion-item>
-  
-      <ion-button color="primary" position="center">Add</ion-button>
+
+      <ion-button color="primary" position="center" (click)="addData()">Add</ion-button>
     </ion-card>
   </ion-list>
 
@@ -97,7 +97,10 @@
 
 
   <!-- Graph will displace directly bellow following code, preferably a Bar Graph -->
+  <ion-card>
   <ion-item>
-    <ion-label position="floating">Targeted vs Eaten Calories</ion-label>
+   <!-- <ion-label position="floating">Targeted vs Eaten Calories</ion-label> -->
+    <canvas #barChart></canvas>
   </ion-item>
+</ion-card>
 </ion-content>
