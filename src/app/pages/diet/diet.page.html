@@ -10,12 +10,20 @@
 <ion-content>
 
   <!-- User input for workouts on selected day above -->
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Targeted Calories</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
 
   <ion-list lines="full" class="ion-no-margin">
     <ion-list-header lines="full">
       <ion-label>
-        Input Types
-        Placeholder: Lunch
+        Food Period
       </ion-label>
     </ion-list-header>
 
@@ -73,4 +81,8 @@
   </ion-list>
 
   <!-- Have option here (a '+' sign) for food period and same options above -->
+
+  <ion-item>
+    <ion-label position="floating">Targeted vs Eaten Calories</ion-label>
+  </ion-item>
 </ion-content>
