@@ -12,4 +12,9 @@ export class DietPage implements OnInit {
   ngOnInit() {
   }
 
+  btnClicked() {
+    console.log("btn Clicked. Yeaaaahhhh!");
+    alert("Yeaaahhhhhh!");
+  }
+
 }
