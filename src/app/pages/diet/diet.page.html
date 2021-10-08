@@ -22,13 +22,27 @@
 
   <ion-list lines="full" class="ion-no-margin">
     <ion-list-header lines="full">
+      <!-- 1. Appears on a blank page with everything below. User clicks Add Meal -->
       <ion-label>
-        Food Period: Lunch
+        Meal: 
       </ion-label>
+      <!-- 2. Appears after User clicks Meal  -->
+      <ion-select interface="popover">
+        <ion-select-option value="breakfast">Breakfast</ion-select-option>
+        <ion-select-option value="lunch">Lunch</ion-select-option>
+        <ion-select-option value="dinner">Dinner</ion-select-option>
+        <ion-select-option value="preWorkout">Pre Workout</ion-select-option>
+        <ion-select-option value="postWorkout">Post Workout</ion-select-option>
+        <ion-select-option value="snack">Snack</ion-select-option>
+      </ion-select>
     </ion-list-header>
 
-    <!-- Have buttons that each display eating periods today:
-    Such as, Breakfast, Dinner, After(and Before) Workout, and snacks, etc. -->
+    <!-- 3. Appears after User chooses Meal -->
+    <ion-list>
+      <ion-button expand="block">Add Food</ion-button>
+    </ion-list>
+  <!-- </ion-list> -->
+    <!-- 4. Code below will only appear after user clicks 'Add Meal' then 'Add Food' -->
     <ion-card>
       <ion-item>
         <ion-label>Food Name</ion-label>
@@ -84,9 +98,9 @@
     </ion-card>
   </ion-list> 
 
-  <!-- Have popover here for function -->
+  <!-- Always remains below code above -->
   <ion-list (click)="btnClicked()">
-    <ion-button expand="block">Add Food Period</ion-button>
+    <ion-button expand="block">Add Meal</ion-button>
   </ion-list>
 
   <!-- <ion-fab vertical="center" horizontal="center" slot="fixed">
@@ -98,9 +112,9 @@
 
   <!-- Graph will displace directly bellow following code, preferably a Bar Graph -->
   <ion-card>
-  <ion-item>
-   <!-- <ion-label position="floating">Targeted vs Eaten Calories</ion-label> -->
-    <canvas #barChart></canvas>
-  </ion-item>
-</ion-card>
+    <ion-item>
+    <!-- <ion-label position="floating">Targeted vs Eaten Calories</ion-label> -->
+      <canvas #barChart></canvas>
+    </ion-item>
+  </ion-card>
 </ion-content>
