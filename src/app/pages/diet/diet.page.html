@@ -21,29 +21,31 @@
   </ion-item>
 
   <ion-list lines="full" class="ion-no-margin">
-    <ion-list-header lines="full">
+    <ion-list-header lines="full" *ngIf="false">
       <!-- 1. Appears on a blank page with everything below. User clicks Add Meal -->
-      <ion-label>
-        Meal: 
-      </ion-label>
-      <!-- 2. Appears after User clicks Meal  -->
-      <ion-select interface="popover">
-        <ion-select-option value="breakfast">Breakfast</ion-select-option>
-        <ion-select-option value="lunch">Lunch</ion-select-option>
-        <ion-select-option value="dinner">Dinner</ion-select-option>
-        <ion-select-option value="preWorkout">Pre Workout</ion-select-option>
-        <ion-select-option value="postWorkout">Post Workout</ion-select-option>
-        <ion-select-option value="snack">Snack</ion-select-option>
-      </ion-select>
+      <!-- <ion-item *ngIf="true"> -->
+        <ion-label>
+          Meal: 
+        </ion-label>
+        <!-- 2. Appears after User clicks Meal  -->
+        <ion-select interface="popover">
+          <ion-select-option value="breakfast">Breakfast</ion-select-option>
+          <ion-select-option value="lunch">Lunch</ion-select-option>
+          <ion-select-option value="dinner">Dinner</ion-select-option>
+          <ion-select-option value="preWorkout">Pre Workout</ion-select-option>
+          <ion-select-option value="postWorkout">Post Workout</ion-select-option>
+          <ion-select-option value="snack">Snack</ion-select-option>
+        </ion-select>
+      <!-- </ion-item> -->
     </ion-list-header>
 
     <!-- 3. Appears after User chooses Meal -->
-    <ion-list>
+    <ion-list *ngIf="false">
       <ion-button expand="block">Add Food</ion-button>
     </ion-list>
   <!-- </ion-list> -->
     <!-- 4. Code below will only appear after user clicks 'Add Meal' then 'Add Food' -->
-    <ion-card>
+    <ion-card *ngIf="false">
       <ion-item>
         <ion-label>Food Name</ion-label>
         <ion-input [(ngModel)]='Food_Name'></ion-input>
