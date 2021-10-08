@@ -22,6 +22,11 @@ export class FireserviceService {
   saveDetails(data) {
     return this.firestore.collection("users").doc(data.uid).set(data);
   }
+
+  saveDiet(data) {
+    return this.firestore.collection("users").doc(data.uid).collection("diet").doc(data.Date).set(data);
+  }
+
   getDetails(data) {
     return this.firestore.collection("users").doc(data.uid).valueChanges();
   }
