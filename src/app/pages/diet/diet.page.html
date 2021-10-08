@@ -12,12 +12,12 @@
   <!-- User input for food on selected day above -->
   <ion-item>
     <ion-label>Date</ion-label>
-    <ion-datetime displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
+    <ion-datetime displayFormat="MM DD YY" placeholder="Select Date" [(ngModel)]='Date '></ion-datetime>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Targeted Calories</ion-label>
-    <ion-input [(ngModel)]= 'targetedCalories' type="number"></ion-input>
+    <ion-input type="number" [(ngModel)]='Targeted_Calories'></ion-input>
   </ion-item>
 
   <ion-list lines="full" class="ion-no-margin">
@@ -46,55 +46,55 @@
     <ion-card>
       <ion-item>
         <ion-label>Food Name</ion-label>
-        <ion-input placeholder="placeholder" type="text"></ion-input>
+        <ion-input [(ngModel)]='Food_Name'></ion-input>
       </ion-item>
-
+  
       <ion-item>
         <ion-label>Brand</ion-label>
-        <ion-input placeholder="placeholder" type="text"></ion-input>
+        <ion-input [(ngModel)]='Brand'></ion-input>
       </ion-item>
-
+  
       <ion-item>
         <ion-label>Calories</ion-label>
-        <ion-input [(ngModel)] = 'calories' type="number"></ion-input>
+        <ion-input [(ngModel)]='Calories'></ion-input>
       </ion-item>
-
+  
       <ion-item>
         <ion-label>Protein</ion-label>
-        <ion-input placeholder="placeholder" type="number"></ion-input>
+        <ion-input [(ngModel)]='Protein'></ion-input>
       </ion-item>
-
+  
       <ion-item>
         <ion-label>Carbs</ion-label>
-        <ion-input placeholder="placeholder" type="number"></ion-input>
+        <ion-input [(ngModel)]='Carbs'></ion-input>
       </ion-item>
-
+  
       <ion-item>
         <ion-label>Fat</ion-label>
-        <ion-input placeholder="placeholder" type="number"></ion-input>
+        <ion-input [(ngModel)]='Fat'></ion-input>
       </ion-item>
-
+  
       <ion-item>
         <ion-label>Fiber</ion-label>
-        <ion-input placeholder="placeholder" type="number"></ion-input>
+        <ion-input [(ngModel)]='Fiber'></ion-input>
       </ion-item>
-
+  
       <ion-item>
         <ion-label>Sugar</ion-label>
-        <ion-input placeholder="placeholder" type="number"></ion-input>
+        <ion-input [(ngModel)]='Sugar'></ion-input>
       </ion-item>
-
+  
       <ion-item>
         <ion-label>Sodium</ion-label>
-        <ion-input placeholder="placeholder" type="number"></ion-input>
+        <ion-input [(ngModel)]='Sodium'></ion-input>
       </ion-item>
-
+  
       <ion-item>
         <ion-label>Cholesterol</ion-label>
-        <ion-input placeholder="placeholder" type="number"></ion-input>
+        <ion-input [(ngModel)]='Cholesterol'></ion-input>
       </ion-item>
-
-      <ion-button color="primary" position="center" (click)="addData()">Add</ion-button>
+  
+      <ion-button (click)="savefood()" color="primary" position="center">Add</ion-button>
       
       <!-- 5. Will display after User clicks Add. Collapsing the code
       above into a smaller card item.  -->
