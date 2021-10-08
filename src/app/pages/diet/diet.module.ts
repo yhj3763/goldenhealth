@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { DietPageRoutingModule } from './diet-routing.module';
+import { LoginPage } from '../../login/login.page';
 
 import { DietPage } from './diet.page';
 
@@ -15,6 +16,8 @@ import { DietPage } from './diet.page';
     IonicModule,
     DietPageRoutingModule
   ],
-  declarations: [DietPage]
+  declarations: [DietPage],
+    providers: [LoginPage]
+
 })
 export class DietPageModule {}
