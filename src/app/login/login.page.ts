@@ -12,6 +12,8 @@ export class LoginPage implements OnInit {
   public password:any;
   hidePassword = true;
   passwordToggleIcon = 'eye-off';
+    public userid:any;
+
   constructor(
     public router:Router,
     public fireService:FireserviceService
@@ -35,6 +37,7 @@ export class LoginPage implements OnInit {
   login(){
     this.fireService.loginWithEmail({email:this.email,password:this.password}).then(res=>{
       console.log(res);
+      localStorage.setItem('uid', res.user.uid);
       if(res.user.uid){
         this.fireService.getDetails({uid:res.user.uid}).subscribe(res=>{
           console.log(res);
@@ -49,7 +52,10 @@ export class LoginPage implements OnInit {
     })
   }
 
-
+  uid(){
+    const id = localStorage.getItem('uid');
+    return id;
+  }
   signup(){
     this.router.navigateByUrl('signup');
   }
