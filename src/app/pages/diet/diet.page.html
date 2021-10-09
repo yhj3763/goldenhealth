@@ -21,13 +21,14 @@
   </ion-item>
 
   <ion-list lines="full" class="ion-no-margin">
-    <ion-list-header lines="full" *ngIf="false">
+    <ion-list-header lines="full" *ngIf="showControl">
       <!-- 1. Appears on a blank page with everything below. User clicks Add Meal -->
       <!-- <ion-item *ngIf="true"> -->
         <ion-label>
           Meal: 
         </ion-label>
         <!-- 2. Appears after User clicks Meal  -->
+        <!-- Have a ion-change or onchange page -->
         <ion-select interface="popover">
           <ion-select-option value="breakfast">Breakfast</ion-select-option>
           <ion-select-option value="lunch">Lunch</ion-select-option>

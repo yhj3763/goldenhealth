@@ -24,6 +24,7 @@ export class DietPage implements OnInit {
   public Sugar:any;
   public Sodium:any;
   public Cholesterol:any;
+  showControl: boolean = false;
 
   //uid
   public uid = this.logininfo.uid();
@@ -99,7 +100,8 @@ addData()
   btnClicked() {
     console.log('btn Clicked. Yeaaaahhhh!');
     // alert('Yeaaahhhhhh!');
-    this.createBarChart();
+    //this.createBarChart();
+    this.showControl = !this.showControl;
   }
 
 }
