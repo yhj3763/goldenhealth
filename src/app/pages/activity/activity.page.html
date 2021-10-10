@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>activity</ion-title>
+    <ion-title>Activity</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
@@ -15,7 +15,7 @@
 
   <ion-item>
     <ion-label>Activity Date</ion-label>
-    <ion-datetime displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
+    <ion-datetime [(ngModel)]='Date' displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
   </ion-item>
 
   <!-- User input for workouts on selected day above -->
@@ -28,27 +28,28 @@
     </ion-list-header>
 
     <ion-item>
-      <ion-label>Workout Name</ion-label>
-      <ion-input placeholder="placeholder" type="text"></ion-input>
+      <ion-label>Workout Name: </ion-label>
+      <ion-input [(ngModel)]='Workout_name' type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label># of Sets</ion-label>
-      <ion-input placeholder="placeholder" type="number"></ion-input>
+      <ion-label># of Sets: </ion-label>
+      <ion-input [(ngModel)]='Set' type="number"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label># of Reps</ion-label>
-      <ion-input placeholder="placeholder" type="number"></ion-input>
+      <ion-label># of Reps: </ion-label>
+      <ion-input [(ngModel)]='Reps' type="number"></ion-input>
     </ion-item>
 
     <!-- *****add time here!!!!***** -->
 
     <ion-item>
       <ion-label position="stacked">Notes</ion-label>
-      <ion-input placeholder="Here I improved on..."></ion-input>
+      <ion-input [(ngModel)]='reps' placeholder="Here I improved on..."></ion-input>
     </ion-item>
   </ion-list>
+  <ion-button (click)="saveactivity()" color="primary" position="center">Add</ion-button>
 
    <!-- Add a '+' button here to allow user to add another workoutt-->
 
