@@ -21,7 +21,7 @@
   </ion-item>
 
   <ion-list lines="full" class="ion-no-margin">
-    <ion-list-header lines="full" *ngIf="showControl">
+    <ion-list-header lines="full" *ngIf="showMeal">
       <!-- 1. Appears on a blank page with everything below. User clicks Add Meal -->
       <!-- <ion-item *ngIf="true"> -->
         <ion-label>
@@ -29,7 +29,7 @@
         </ion-label>
         <!-- 2. Appears after User clicks Meal  -->
         <!-- Have a ion-change or onchange page -->
-        <ion-select interface="popover">
+        <ion-select interface="popover" (ionChange)="mealClicked()">
           <ion-select-option value="breakfast">Breakfast</ion-select-option>
           <ion-select-option value="lunch">Lunch</ion-select-option>
           <ion-select-option value="dinner">Dinner</ion-select-option>
@@ -41,12 +41,12 @@
     </ion-list-header>
 
     <!-- 3. Appears after User chooses Meal -->
-    <ion-list *ngIf="false">
+    <ion-list *ngIf="showFood" (click)="macrosClicked()">
       <ion-button expand="block">Add Food</ion-button>
     </ion-list>
   <!-- </ion-list> -->
     <!-- 4. Code below will only appear after user clicks 'Add Meal' then 'Add Food' -->
-    <ion-card *ngIf="false">
+    <ion-card *ngIf="showMacros">
       <ion-item>
         <ion-label>Food Name</ion-label>
         <ion-input [(ngModel)]='Food_Name'></ion-input>
@@ -97,17 +97,18 @@
         <ion-input [(ngModel)]='Cholesterol'></ion-input>
       </ion-item>
   
-      <ion-button (click)="savefood()" color="primary" position="center">Add</ion-button>
-      
-      <!-- 5. Will display after User clicks Add. Collapsing the code
-      above into a smaller card item.  -->
-      <ion-card-content>
-        Food Name: placeholder
-        Calories: placeholder
-      </ion-card-content>
-    
+      <ion-button (click)="addClicked()" color="primary" position="center">Add</ion-button>    
     </ion-card>
   </ion-list> 
+
+
+  <!-- 5. Will display after User clicks Add. Collapsing the code
+  above into a smaller card item.  -->
+  <ion-list *ngIf="showInput">
+    Food Name: placeholder
+    Calories: placeholder
+    <!-- rest of what's in #4, goes here to be displayed -Alex -->
+  </ion-list>
 
   <!-- (10/8/21) html element ngif to code
     directive based on boolean  in ts-->
