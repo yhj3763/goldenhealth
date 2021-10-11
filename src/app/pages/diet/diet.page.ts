@@ -4,7 +4,14 @@ Chart.register(...registerables);
 import { LoginPage } from 'src/app/login/login.page';
 import { FireserviceService } from '../../fireservice.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+interface Meal {
+  type: string,
+  food: string,
+  calories: number,
+  macro: string
+}
 @Component({
   selector: 'app-diet',
   templateUrl: './diet.page.html',
@@ -28,6 +35,17 @@ export class DietPage implements OnInit {
   showFood: boolean = false;
   showMacros: boolean = false;
   showInput: boolean = false;
+  form: FormGroup;
+  mealTypes: Array<object> = [
+    { name: 'Breakfast'},
+    { name: 'Lunch'},
+    { name: 'Dinner'},
+    { name: 'Post Workout'},
+    { name: 'Pre Workout'},
+    { name: 'Snack'}
+  ];
+  meals: Array<Meal> = [];
+  //{ type: 'Breakfast', food: 'Cereal', calories: '1990', macro: ' }, {type: Breakfast, food: 'eggs'}
 
   //uid
   public uid = this.logininfo.uid();
@@ -38,10 +56,25 @@ export class DietPage implements OnInit {
   constructor(
     public router:Router,
     public fireService:FireserviceService, 
-    public logininfo: LoginPage  
+    public logininfo: LoginPage,
+    private _formBuilder: FormBuilder 
+
   ) { }
 
   ngOnInit() {
+    this.buildForm();
+  }
+
+  buildForm() {
+    this.form = this._formBuilder.group({
+      meal: [this.meals, Validators.required],
+      food: ['', Validators.required],
+      targetedCalories: ['', Validators.required]
+    })
+  }
+
+  sendData() {
+    console.log('TODO: send form data to firebase');
   }
   savefood(){
     let data = {

@@ -20,105 +20,29 @@
     <ion-input type="number" [(ngModel)]='Targeted_Calories'></ion-input>
   </ion-item>
 
-  <ion-list lines="full" class="ion-no-margin">
-    <ion-list-header lines="full" *ngIf="showMeal">
-      <!-- 1. Appears on a blank page with everything below. User clicks Add Meal -->
-      <!-- <ion-item *ngIf="true"> -->
-        <!-- sidenote: whatever meal User picks, must remain with food added underneath -->
-        <ion-label>
-          Meal: 
-        </ion-label>
-        <!-- 2. Appears after User clicks Meal  -->
-        <!-- Have a ion-change or onchange page -->
-        <ion-select interface="popover" (ionChange)="mealClicked()">
-          <ion-select-option value="breakfast">Breakfast</ion-select-option>
-          <ion-select-option value="lunch">Lunch</ion-select-option>
-          <ion-select-option value="dinner">Dinner</ion-select-option>
-          <ion-select-option value="preWorkout">Pre Workout</ion-select-option>
-          <ion-select-option value="postWorkout">Post Workout</ion-select-option>
-          <ion-select-option value="snack">Snack</ion-select-option>
-        </ion-select>
-      <!-- </ion-item> -->
-    </ion-list-header>
 
-    <!-- 3. Appears after User chooses Meal -->
-    <ion-list *ngIf="showFood" (click)="macrosClicked()">
-      <ion-button expand="block">Add Food</ion-button>
-    </ion-list>
-  <!-- </ion-list> -->
-    <!-- 4. Code below will only appear after user clicks 'Add Meal' then 'Add Food' -->
-    <ion-card *ngIf="showMacros">
-      <ion-item>
-        <ion-label>Food Name</ion-label>
-        <ion-input [(ngModel)]='Food_Name'></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label>Brand</ion-label>
-        <ion-input [(ngModel)]='Brand'></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label>Calories</ion-label>
-        <ion-input [(ngModel)]='Calories'></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label>Protein</ion-label>
-        <ion-input [(ngModel)]='Protein'></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label>Carbs</ion-label>
-        <ion-input [(ngModel)]='Carbs'></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label>Fat</ion-label>
-        <ion-input [(ngModel)]='Fat'></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label>Fiber</ion-label>
-        <ion-input [(ngModel)]='Fiber'></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label>Sugar</ion-label>
-        <ion-input [(ngModel)]='Sugar'></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label>Sodium</ion-label>
-        <ion-input [(ngModel)]='Sodium'></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label>Cholesterol</ion-label>
-        <ion-input [(ngModel)]='Cholesterol'></ion-input>
-      </ion-item>
-  
-      <ion-button (click)="addClicked()" color="primary" position="center">Add</ion-button>    
-    </ion-card>
-  </ion-list> 
+  <form [formGroup]="form" (ngSubmit)="sendData()">
+    <ion-item>
+      <ion-label>Meal</ion-label>
+      <ion-select formControlName="meal">
+        <ng-container *ngFor="let meal of mealTypes">
+          <ion-select-option [value]="meal.name">{{meal.name}}</ion-select-option>
+        </ng-container>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Food</ion-label>
+      <ion-input formControlName="food"></ion-input>
+ 
+    </ion-item>
+
+    <ion-button size="default" type="submit" expand="block" [disabled]="!form.valid">SUBMIT MEAL</ion-button>
+  </form>
+   
 
 
-  <!-- 5. Will display after User clicks Add. Collapsing the code
-  above into a smaller card item.  -->
-  <ion-list *ngIf="showInput">
-    Food Name: placeholder
-    Calories: placeholder
-    <!-- rest of what's in #4, goes here to be displayed -Alex -->
-  </ion-list>
-
-  <!-- (10/8/21) html element ngif to code
-    directive based on boolean  in ts-->
-    <!-- (10/9/21) Reminder to have click event switced to 'Add' button -->
-  <!-- Always remains below code above -->
-  <ion-list (click)="btnClicked()">
-    <ion-button expand="block">Add Meal</ion-button>
-  </ion-list>
-
+ 
   <!-- <ion-fab vertical="center" horizontal="center" slot="fixed">
     <ion-fab-button>
       <ion-icon name="share"></ion-icon>
