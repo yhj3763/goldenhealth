@@ -39,6 +39,8 @@ export class DietPage implements OnInit {
   showMacros: boolean = false;
   showInput: boolean = false;
   form: FormGroup;
+  public userid: number;
+
   mealTypes: Array<object> = [
     { name: 'Breakfast'},
     { name: 'Lunch'},
@@ -77,7 +79,8 @@ export class DietPage implements OnInit {
       calories: ['', Validators.required],
       protein: ['', Validators.required],
       carbs: ['', Validators.required],
-      fat: ['', Validators.required]
+      fat: ['', Validators.required],
+      userid: [this.userid, Validators.required]
       // targetedCalories: ['', Validators.required]
     })
   }
