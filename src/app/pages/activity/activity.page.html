@@ -8,55 +8,45 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-item>
-    <ion-label>Activity Date</ion-label>
-    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
-  </ion-item> -->
-
-  <ion-item>
-    <ion-label>Activity Date</ion-label>
-    <ion-datetime [(ngModel)]='Date' displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
-  </ion-item>
-
-  <!-- User input for workouts on selected day above -->
-
-  <ion-list lines="full" class="ion-no-margin">
-    <ion-list-header lines="full">
-      <ion-label>
-        Input Types
-      </ion-label>
-    </ion-list-header>
-
+  <form [formGroup]="form" (ngSubmit)="sendData()">
     <ion-item>
-      <ion-label>Workout Name: </ion-label>
-      <ion-input [(ngModel)]='Workout_name' type="text"></ion-input>
+      <ion-label>Date</ion-label>
+      <ion-datetime formControlName="date" displayFormat="MM DD YY" placeholder="Select Date" [(ngModel)]='Date '></ion-datetime>
     </ion-item>
 
     <ion-item>
-      <ion-label># of Sets: </ion-label>
-      <ion-input [(ngModel)]='Set' type="number"></ion-input>
+      <ion-label>Workout: </ion-label>
+      <ion-input formControlName="workout"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label># of Reps: </ion-label>
-      <ion-input [(ngModel)]='Reps' type="number"></ion-input>
+      <ion-label>Sets: </ion-label>
+      <ion-input formControlName="sets"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Reps: </ion-label>
+      <ion-input formControlName="reps"></ion-input>
     </ion-item>
 
     <!-- *****add time here!!!!***** -->
 
     <ion-item>
-      <ion-label position="stacked">Notes</ion-label>
-      <ion-input [(ngModel)]='reps' placeholder="Here I improved on..."></ion-input>
+      <ion-label position="stacked">Notes: </ion-label>
+      <ion-input formControlName="notes" placeholder="Here I improved on..."></ion-input>
     </ion-item>
-  </ion-list>
-  <ion-button (click)="saveactivity()" color="primary" position="center">Add</ion-button>
 
-   <!-- Add a '+' button here to allow user to add another workoutt-->
+    <ion-button size="default" type="submit" expand="block" [disabled]="!form.valid">SUBMIT MEAL</ion-button>
+  </form>
+  <!-- <ion-item>
+    <ion-label>Activity Date</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+  </ion-item> -->
 
-   <!-- <ion-fab vertical="top" horizontal="end" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab> -->
-
+  <!-- <ion-list lines="full" class="ion-no-margin">
+    <ion-list-header lines="full">
+      <ion-label>
+        Input Types
+      </ion-label>
+    </ion-list-header> -->
 </ion-content>

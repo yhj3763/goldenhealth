@@ -80,8 +80,8 @@ export class DietPage implements OnInit {
       calories: ['', Validators.required],
       protein: ['', Validators.required],
       carbs: ['', Validators.required],
-      fat: ['', Validators.required],
-      userid: [this.userid, Validators.required]
+      fat: ['', Validators.required]
+      // userid: [this.userid, Validators.required]
       // targetedCalories: ['', Validators.required]
     })
   }
