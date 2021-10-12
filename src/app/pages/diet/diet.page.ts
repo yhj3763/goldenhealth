@@ -39,6 +39,7 @@ export class DietPage implements OnInit {
   showMacros: boolean = false;
   showInput: boolean = false;
   form: FormGroup;
+  // ngonit function to be assigned
   public userid: number;
 
   mealTypes: Array<object> = [
