@@ -26,6 +26,8 @@ export class ActivityPage implements OnInit {
   public Set: any;
   public Reps: any;
   form: FormGroup;
+  // ngonit function to be assigned
+  public userid: number;
 
   constructor(    
     public router:Router,
