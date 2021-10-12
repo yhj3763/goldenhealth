@@ -10,7 +10,9 @@ interface Meal {
   type: string,
   food: string,
   calories: number,
-  macro: string
+  protein: number,
+  carbs: number,
+  fat: number
 }
 @Component({
   selector: 'app-diet',
@@ -45,7 +47,8 @@ export class DietPage implements OnInit {
     { name: 'Snack'}
   ];
   meals: Array<Meal> = [];
-  //{ type: 'Breakfast', food: 'Cereal', calories: '1990', macro: ' }, {type: Breakfast, food: 'eggs'}
+  //{ type: 'Breakfast', food: 'Cereal', calories: '1990', protein
+  //: 15, carbs: 30, fat: 10 ' }, {type: Breakfast, food: 'eggs'}
 
   //uid
   public uid = this.logininfo.uid();
@@ -69,7 +72,11 @@ export class DietPage implements OnInit {
     this.form = this._formBuilder.group({
       meal: [this.meals, Validators.required],
       food: ['', Validators.required],
-      targetedCalories: ['', Validators.required]
+      calories: ['', Validators.required],
+      protein: ['', Validators.required],
+      carbs: ['', Validators.required],
+      fat: ['', Validators.required]
+      // targetedCalories: ['', Validators.required]
     })
   }
 
