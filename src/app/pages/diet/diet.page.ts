@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface Meal {
+  date: number,
   type: string,
   food: string,
   calories: number,
@@ -70,6 +71,7 @@ export class DietPage implements OnInit {
 
   buildForm() {
     this.form = this._formBuilder.group({
+      date: ['', Validators.required],
       meal: [this.meals, Validators.required],
       food: ['', Validators.required],
       calories: ['', Validators.required],
