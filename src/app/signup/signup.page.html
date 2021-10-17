@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>SignUp</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content class="ion-pading">
-  <div class="form">
+  <!-- <div class="form"> -->
     <ion-item>
       <ion-label position="stacked">Name</ion-label>
       <ion-input [(ngModel)]='name'></ion-input>
@@ -35,7 +35,8 @@
       <ion-input [(ngModel)]='age'></ion-input>
     </ion-item>
     <ion-button (click)='signup()' expand='block'>Signup</ion-button>
-  </div>
+    <br>
+  <!-- </div> -->
   <h5 (click)='signin()'>Already Have an Account? <ion-text color='primary'>Sign In Here</ion-text>
   </h5>
 </ion-content>
