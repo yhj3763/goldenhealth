@@ -171,27 +171,27 @@ addData()
   this.barChart.update();
 }
 
-  btnClicked() {
-    console.log('btn Clicked. Yeaaaahhhh!');
-    //this.createBarChart();
-    this.showMeal = !this.showMeal;
-  }
+  // btnClicked() {
+  //   console.log('btn Clicked. Yeaaaahhhh!');
+  //   //this.createBarChart();
+  //   this.showMeal = !this.showMeal;
+  // }
 
-  mealClicked() {
-    console.log('testing!');
-    this.showFood = !this.showFood;
-  }
+  // mealClicked() {
+  //   console.log('testing!');
+  //   this.showFood = !this.showFood;
+  // }
 
-  macrosClicked() {
-    console.log('testing, again!');
-    this.showFood = !this.showFood;
-    this.showMacros = !this.showMacros;
-  }
+  // macrosClicked() {
+  //   console.log('testing, again!');
+  //   this.showFood = !this.showFood;
+  //   this.showMacros = !this.showMacros;
+  // }
 
-  addClicked() {
-    console.log('testing, again, again!');
-    this.showMeal = !this.showMeal;
-    this.showMacros = !this.showMacros;
-    this.showInput = !this.showInput;
-  }
+  // addClicked() {
+  //   console.log('testing, again, again!');
+  //   this.showMeal = !this.showMeal;
+  //   this.showMacros = !this.showMacros;
+  //   this.showInput = !this.showInput;
+  // }
 }
