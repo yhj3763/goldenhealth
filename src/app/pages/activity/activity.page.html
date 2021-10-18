@@ -16,24 +16,24 @@
 
     <ion-item>
       <ion-label>Workout: </ion-label>
-      <ion-input formControlName="workout"></ion-input>
+      <ion-input formControlName="workout" [(ngModel)]='Workout'></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Sets: </ion-label>
-      <ion-input formControlName="sets"></ion-input>
+      <ion-input formControlName="sets" [(ngModel)]='Sets '></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Reps: </ion-label>
-      <ion-input formControlName="reps"></ion-input>
+      <ion-input formControlName="reps" [(ngModel)]='Reps '></ion-input>
     </ion-item>
 
     <!-- *****add time here!!!!***** -->
 
     <ion-item>
       <ion-label position="stacked">Notes: </ion-label>
-      <ion-input formControlName="notes" placeholder="Here I improved on..."></ion-input>
+      <ion-input [(ngModel)]='Notes ' formControlName="notes" placeholder="Here I improved on..."></ion-input>
     </ion-item>
 
     <ion-button size="default" type="submit" expand="block" [disabled]="!form.valid">SUBMIT MEAL</ion-button>
@@ -42,7 +42,24 @@
     <ion-label>Activity Date</ion-label>
     <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
   </ion-item> -->
+  <div id = 'dispay'>
+    <!-- <p *ngFor="let user of users | async"> {{user.Date}}{{user.meal[0]}} </p>
+    <p *ngFor="let user of users | async"> {{user.meal[0]}} </p>
+    <p *ngFor="let user of users | async"> {{user.meal[1]}} </p>
+    <p *ngFor="let user of users | async"> {{user.meal[2]}} </p>
+    <p *ngFor="let user of users | async"> {{user.meal[3]}} </p>
+    <p *ngFor="let user of users | async"> {{user.meal[4]}} </p>
+    <p *ngFor="let user of users | async"> {{user.meal[5]}} </p>-->
 
+      <ul *ngFor="let user of users| async">
+        <li>{{user.Date}}</li>
+        <li>{{user.Workout[0]}}</li>
+        <li>{{user.Workout[1]}}</li>
+        <li>{{user.Workout[2]}}</li>
+        <li>{{user.Workout[3]}}</li>
+
+      </ul>
+    </div>
   <!-- <ion-list lines="full" class="ion-no-margin">
     <ion-list-header lines="full">
       <ion-label>
@@ -50,3 +67,4 @@
       </ion-label>
     </ion-list-header> -->
 </ion-content>
+
