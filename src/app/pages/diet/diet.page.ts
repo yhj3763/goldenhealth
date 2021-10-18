@@ -113,7 +113,7 @@ export class DietPage implements OnInit {
     this.list.push("Fat : "       + this.fat)
     let data = {
       Date:this.Date.split('T')[0]+ ":"+this.meal,
-      Targeted_Calories:this.Targeted_Calories,
+      //Targeted_Calories:this.Targeted_Calories,
       meal:this.list,
       uid:this.uid
       }
