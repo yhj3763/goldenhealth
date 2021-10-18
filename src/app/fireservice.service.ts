@@ -32,4 +32,7 @@ export class FireserviceService {
   getDetails(data) {
     return this.firestore.collection("users").doc(data.uid).valueChanges();
   }
+  sendData(data) {
+    return this.firestore.collection("users").add(data);
+  }
 }

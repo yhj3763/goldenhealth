@@ -41,6 +41,7 @@ export class DietPage implements OnInit {
   form: FormGroup;
   // ngonit function to be assigned
   public userid:any;
+  uid = this.logininfo.uid();
 
   mealTypes: Array<object> = [
     { name: 'Breakfast'},
@@ -86,39 +87,24 @@ export class DietPage implements OnInit {
     })
   }
 
-  login(){
+  sendData(){
     //change service 'loginWithEmail' with another for data submitted on this page
-    this.fireService.loginWithEmail({form:this.form}).then(res=>{
-      console.log(res);
-      localStorage.setItem('uid', res.user.uid);
-      if(res.user.uid){
-        this.fireService.getDetails({uid:res.user.uid}).subscribe(res=>{
-          console.log(res);
-          this.router.navigateByUrl('home');
-        },err=>{
-          console.log(err);
-        });
-      }
+    this.fireService.sendData(this.form.value).then(res=>{
+      console.log('RES', res);
+      alert(res);
+      
     },err=>{
       alert(err.message)
       console.log(err);
     })
   }
 
-  uid(){
-    const id = localStorage.getItem('uid');
-    return id;
-  }
-
-  sendData() {
-    console.log('TODO: send form data to firebase');
-  }
   savefood(){
     let data = {
-      // Date:this.Date,
+      Date: '10/17/2021',
       // Food_Name:this.Food_Name,
       // Brand:this.Brand,
-      // Calories:this.Calories,
+      Calories:this.form.get('calories'),
       // Protein:this.Protein,
       // Carbs:this.Carbs,
       // Fat:this.Fat,
@@ -126,11 +112,12 @@ export class DietPage implements OnInit {
       // Sugar:this.Sugar,
       // Sodium:this.Sodium,
       // Cholesterol:this.Cholesterol,
-      uid:this.uid
+      uid: this.uid
     }
     this.fireService.saveDiet(data).then(res=>{
       console.log("Diet saved")
       },err=>{
+        console.log('error')
         console.log(err);
       });
   }

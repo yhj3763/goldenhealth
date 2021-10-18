@@ -21,7 +21,7 @@
   </ion-item>
 
 
-  <form [formGroup]="form" (ngSubmit)="sendData()">
+  <form [formGroup]="form" (ngSubmit)="savefood()">
     <ion-item>
       <ion-label>Date</ion-label>
       <ion-datetime formControlName="date" displayFormat="MM DD YY" placeholder="Select Date" [(ngModel)]='Date '></ion-datetime>
