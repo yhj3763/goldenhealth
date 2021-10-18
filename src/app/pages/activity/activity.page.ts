@@ -3,7 +3,8 @@ import { LoginPage } from 'src/app/login/login.page';
 import { FireserviceService } from '../../fireservice.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Observable } from 'rxjs';
+import { AngularFirestore } from "@angular/fire/compat/firestore"; //import the firestore database
 
 interface Workout {
   date: number,
@@ -22,21 +23,27 @@ interface Workout {
 export class ActivityPage implements OnInit {
   private uid = this.logininfo.uid();
   public Date:any;
-  public Workout_name: any;
-  public Set: any;
+  public Workout: any;
+  public Sets: any;
   public Reps: any;
+  public Notes: any;
   form: FormGroup;
   // ngonit function to be assigned
   public userid: number;
+  users: Observable<any>;
 
   constructor(    
     public router:Router,
     public fireService:FireserviceService, 
     private _formBuilder: FormBuilder, 
-    public logininfo: LoginPage  ) { }
+    public logininfo: LoginPage,
+    public firestore: AngularFirestore
+    ) { }
 
   ngOnInit() {
     this.buildForm();
+    this.users = this.firestore.collection("users").
+                doc(this.uid).collection("activity").valueChanges();
   }
 
   buildForm() {
@@ -50,21 +57,26 @@ export class ActivityPage implements OnInit {
     })
   }
 
-  sendData() {
-    console.log('TODO: send form data to firebase');
-  }
 
-  saveactivity(){
+  workout_list: Array<any> = [];
+  /* 
+    [0] Workout Name
+    [1] Sets
+    [2] Reps：
+    [3] Notes
+  */
+  sendData(){
+    this.workout_list.push("Workout Name: "+this.Workout),
+    this.workout_list.push("Sets: "+this.Sets),
+    this.workout_list.push("Reps："+this.Reps),
+    this.workout_list.push("Notes: "+this.Notes)
     let data = {
-      Date:this.Date.split('T')[0],
-      Workout_name: this.Workout_name,
-      Set: this.Set,
-      Reps: this.Reps,
-      uid:this.uid
+      Date:     this.Date.split('T')[0]+":"+this.Workout,
+      Workout:  this.workout_list,
+      uid:      this.uid
     }
     this.fireService.saveActivity(data).then(res=>{
       console.log("Activity saved")
-      console.log(this.Date)
       },err=>{
         console.log(this.Date)
         console.log(err);
