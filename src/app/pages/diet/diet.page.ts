@@ -5,6 +5,8 @@ import { LoginPage } from 'src/app/login/login.page';
 import { FireserviceService } from '../../fireservice.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AngularFirestore } from "@angular/fire/compat/firestore"; //import the firestore database
+import { Observable } from 'rxjs';
 
 interface Meal {
   date: number,
@@ -22,25 +24,26 @@ interface Meal {
 })
 export class DietPage implements OnInit {
   //userinput
-  // public Date:any;
-  // public Targeted_Calories:any;
-  // public Food_Name:any;
-  // public Brand:any;
-  // public Calories:any;
-  // public Protein:any;
-  // public Carbs:any;
-  // public Fat:any;
-  // public Fiber:any;
-  // public Sugar:any;
-  // public Sodium:any;
-  // public Cholesterol:any;
-  // showMeal: boolean = false;
-  // showFood: boolean = false;
-  // showMacros: boolean = false;
-  // showInput: boolean = false;
+  public Date:any;
+  public Targeted_Calories:any;
+  public meal:any;
+  public food:any;
+  public calories:any;
+  public protein:any;
+  public carbs:any;
+  public fat:any;
+  
+  users: Observable<any>;
+
+
+  showMeal: boolean = false;
+  showFood: boolean = false;
+  showMacros: boolean = false;
+  showInput: boolean = false;
+
   form: FormGroup;
   // ngonit function to be assigned
-  public userid:any;
+  //private userid: number;
 
   mealTypes: Array<object> = [
     { name: 'Breakfast'},
@@ -50,28 +53,40 @@ export class DietPage implements OnInit {
     { name: 'Pre Workout'},
     { name: 'Snack'}
   ];
+
   meals: Array<Meal> = [];
+  list: Array<any> = [];
+  /**list
+   [0] meal type
+   [1] food name
+   [2] calories
+   [3] protein
+   [4] carbs
+   [5] fat
+   */
   //{ type: 'Breakfast', food: 'Cereal', calories: '1990', protein
   //: 15, carbs: 30, fat: 10 ' }, {type: Breakfast, food: 'eggs'}
 
   //uid
-  // public uid = this.logininfo.uid();
+  private uid = this.logininfo.uid();
 
   @ViewChild('barChart') barChart;
   public targetedCalories: number;
-  public calories: number;
   constructor(
     public router:Router,
     public fireService:FireserviceService, 
     public logininfo: LoginPage,
+    public firestore: AngularFirestore,
     private _formBuilder: FormBuilder 
 
   ) { }
 
   ngOnInit() {
     this.buildForm();
+    this.getdata();
+    this.users = this.firestore.collection("users").
+                doc(this.uid).collection("diet").valueChanges();
   }
-
   buildForm() {
     this.form = this._formBuilder.group({
       date: ['', Validators.required],
@@ -86,54 +101,39 @@ export class DietPage implements OnInit {
     })
   }
 
-  login(){
-    //change service 'loginWithEmail' with another for data submitted on this page
-    this.fireService.loginWithEmail({form:this.form}).then(res=>{
-      console.log(res);
-      localStorage.setItem('uid', res.user.uid);
-      if(res.user.uid){
-        this.fireService.getDetails({uid:res.user.uid}).subscribe(res=>{
-          console.log(res);
-          this.router.navigateByUrl('home');
-        },err=>{
-          console.log(err);
-        });
-      }
-    },err=>{
-      alert(err.message)
-      console.log(err);
-    })
+  buildarray(){
+    this.meals.push()
   }
-
-  uid(){
-    const id = localStorage.getItem('uid');
-    return id;
-  }
-
   sendData() {
-    console.log('TODO: send form data to firebase');
-  }
-  savefood(){
+    this.list.push("Meal : "      + this.meal),
+    this.list.push("Food : "      + this.food),
+    this.list.push("Calories : "  + this.calories),
+    this.list.push("Protein : "   + this.protein),
+    this.list.push("Carbs : "     + this.carbs),
+    this.list.push("Fat : "       + this.fat)
     let data = {
-      // Date:this.Date,
-      // Food_Name:this.Food_Name,
-      // Brand:this.Brand,
-      // Calories:this.Calories,
-      // Protein:this.Protein,
-      // Carbs:this.Carbs,
-      // Fat:this.Fat,
-      // Fiber:this.Fiber,
-      // Sugar:this.Sugar,
-      // Sodium:this.Sodium,
-      // Cholesterol:this.Cholesterol,
+      Date:this.Date.split('T')[0]+ ":"+this.meal,
+      Targeted_Calories:this.Targeted_Calories,
+      meal:this.list,
       uid:this.uid
-    }
+      }
     this.fireService.saveDiet(data).then(res=>{
       console.log("Diet saved")
+      location.reload();
       },err=>{
         console.log(err);
-      });
-  }
+      });  
+    
+    }
+
+    //getdatafrom firebase base on today 
+    getdata(){
+      this.firestore.collection("users").doc(this.uid).collection("diet").
+        valueChanges().subscribe((response) => {
+        console.log('reponse ', response);
+        //(document.getElementById('display') as HTMLFormElement).innerhtml = response[0][0];*/
+      })
+    }
   createBarChart()
   {
     this.barChart = new Chart(this.barChart.nativeElement, {
@@ -170,9 +170,27 @@ addData()
   this.barChart.update();
 }
 
-  // btnClicked() {
-  //   console.log('btn Clicked. Yeaaaahhhh!');
-  //   //this.createBarChart();
-  //   this.showMeal = !this.showMeal;
-  // }
+  btnClicked() {
+    console.log('btn Clicked. Yeaaaahhhh!');
+    //this.createBarChart();
+    this.showMeal = !this.showMeal;
+  }
+
+  mealClicked() {
+    console.log('testing!');
+    this.showFood = !this.showFood;
+  }
+
+  macrosClicked() {
+    console.log('testing, again!');
+    this.showFood = !this.showFood;
+    this.showMacros = !this.showMacros;
+  }
+
+  addClicked() {
+    console.log('testing, again, again!');
+    this.showMeal = !this.showMeal;
+    this.showMacros = !this.showMacros;
+    this.showInput = !this.showInput;
+  }
 }
