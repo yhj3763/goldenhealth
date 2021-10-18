@@ -27,7 +27,7 @@ export class FireserviceService {
     return this.firestore.collection("users").doc(data.uid).collection("diet").doc(data.Date).set(data);
   }
   saveActivity(data) {
-    return this.firestore.collection("users").doc(data.uid).collection("activity").doc(data.Date).collection("activities").doc(data.Workout_name).set(data);
+    return this.firestore.collection("users").doc(data.uid).collection("activity").doc(data.Date).set(data);
   }
   getDetails(data) {
     return this.firestore.collection("users").doc(data.uid).valueChanges();

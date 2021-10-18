@@ -24,12 +24,12 @@
   <form [formGroup]="form" (ngSubmit)="savefood()">
     <ion-item>
       <ion-label>Date</ion-label>
-      <ion-datetime formControlName="date" displayFormat="MM DD YY" placeholder="Select Date" [(ngModel)]='Date '></ion-datetime>
+      <ion-datetime [(ngModel)]='Date' formControlName="date" displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
     </ion-item>
 
     <ion-item>
       <ion-label>Meal: </ion-label>
-      <ion-select formControlName="meal">
+      <ion-select [(ngModel)]='meal' formControlName="meal">
         <ng-container *ngFor="let meal of mealTypes">
           <ion-select-option [value]="meal.name">{{meal.name}}</ion-select-option>
         </ng-container>
@@ -38,27 +38,27 @@
 
     <ion-item>
       <ion-label>Food: </ion-label>
-      <ion-input formControlName="food"></ion-input>
+      <ion-input [(ngModel)]='food' formControlName="food"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Calories: </ion-label>
-      <ion-input formControlName="calories"></ion-input>
+      <ion-input [(ngModel)]='calories' formControlName="calories"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Protein: </ion-label>
-      <ion-input formControlName="protein"></ion-input>
+      <ion-input [(ngModel)]='protein' formControlName="protein"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Carbs: </ion-label>
-      <ion-input formControlName="carbs"></ion-input>
+      <ion-input [(ngModel)]='carbs' formControlName="carbs"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Fat: </ion-label>
-      <ion-input formControlName="fat"></ion-input>
+      <ion-input [(ngModel)]='fat' formControlName="fat"></ion-input>
     </ion-item>
 
     <ion-button size="default" type="submit" expand="block" [disabled]="!form.valid">SUBMIT MEAL</ion-button>
@@ -66,14 +66,31 @@
    
 
 
- 
   <!-- <ion-fab vertical="center" horizontal="center" slot="fixed">
     <ion-fab-button>
       <ion-icon name="share"></ion-icon>
     </ion-fab-button>
   </ion-fab> -->
 
+  <div id = 'dispay'>
+    <!-- <p *ngFor="let user of users | async"> {{user.Date}}{{user.meal[0]}} </p>
+    <p *ngFor="let user of users | async"> {{user.meal[0]}} </p>
+    <p *ngFor="let user of users | async"> {{user.meal[1]}} </p>
+    <p *ngFor="let user of users | async"> {{user.meal[2]}} </p>
+    <p *ngFor="let user of users | async"> {{user.meal[3]}} </p>
+    <p *ngFor="let user of users | async"> {{user.meal[4]}} </p>
+    <p *ngFor="let user of users | async"> {{user.meal[5]}} </p>-->
 
+      <ul *ngFor="let user of users| async">
+        <li>{{user.Date}}</li>
+        <li>{{user.meal[0]}}</li>
+        <li>{{user.meal[1]}}</li>
+        <li>{{user.meal[2]}}</li>
+        <li>{{user.meal[3]}}</li>
+        <li>{{user.meal[4]}}</li>
+        <li>{{user.meal[5]}}</li>
+      </ul>
+    </div>
   <!-- Graph will displace directly bellow following code, preferably a Bar Graph -->
   <ion-card>
     <ion-item>
