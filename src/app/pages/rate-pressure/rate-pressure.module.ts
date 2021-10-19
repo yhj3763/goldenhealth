@@ -8,6 +8,9 @@ import { RatePressurePageRoutingModule } from './rate-pressure-routing.module';
 
 import { RatePressurePage } from './rate-pressure.page';
 
+
+
+
 @NgModule({
   imports: [
     CommonModule,
