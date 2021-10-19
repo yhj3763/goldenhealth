@@ -24,10 +24,12 @@ export class FireserviceService {
   }
 
   saveDiet(data) {
-    return this.firestore.collection("users").doc(data.uid).collection("diet").doc(data.Date).set(data);
+    return this.firestore.collection("users").doc(data.uid).
+    collection("diet").doc(data.uid).collection(data.Date).doc(data.DateType).set(data);
   }
   saveActivity(data) {
-    return this.firestore.collection("users").doc(data.uid).collection("activity").doc(data.Date).set(data);
+    return this.firestore.collection("users").doc(data.uid)
+    .collection("activity").doc(data.uid).collection(data.Date).doc(data.DateType).set(data);
   }
   getDetails(data) {
     return this.firestore.collection("users").doc(data.uid).valueChanges();
