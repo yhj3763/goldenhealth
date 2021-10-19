@@ -31,7 +31,10 @@ export class ActivityPage implements OnInit {
   // ngonit function to be assigned
   public userid: number;
   users: Observable<any>;
-
+  todaydate = new Date();
+  inputdate = this.todaydate.getFullYear() + "-" + 
+              (this.todaydate.getMonth()+1) + "-"+
+              this.todaydate.getDate();
   constructor(    
     public router:Router,
     public fireService:FireserviceService, 
@@ -42,8 +45,9 @@ export class ActivityPage implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    this.users = this.firestore.collection("users").
-                doc(this.uid).collection("activity").valueChanges();
+    console.log(this.inputdate);
+    this.users = this.firestore.collection("users").doc(this.uid).
+          collection("activity").doc(this.uid).collection(this.inputdate).valueChanges();
   }
 
   buildForm() {
@@ -71,9 +75,10 @@ export class ActivityPage implements OnInit {
     this.workout_list.push("Reps："+this.Reps),
     this.workout_list.push("Notes: "+this.Notes)
     let data = {
-      Date:     this.Date.split('T')[0]+":"+this.Workout,
+      Date:     this.Date.split('T')[0],
       Workout:  this.workout_list,
-      uid:      this.uid
+      uid:      this.uid,
+      DateType: this.Date.split('T')[0]+":"+this.Workout
     }
     this.fireService.saveActivity(data).then(res=>{
       console.log("Activity saved")
