@@ -69,7 +69,10 @@ export class DietPage implements OnInit {
 
   //uid
   private uid = this.logininfo.uid();
-
+  todaydate = new Date()
+  inputdate = this.todaydate.getFullYear() + "-" + 
+              (this.todaydate.getMonth()+1) + "-"+
+              this.todaydate.getDate()
   @ViewChild('barChart') barChart;
   public targetedCalories: number;
   constructor(
@@ -84,8 +87,9 @@ export class DietPage implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.getdata();
-    this.users = this.firestore.collection("users").
-                doc(this.uid).collection("diet").valueChanges();
+    console.log(this.inputdate);
+    this.users = this.firestore.collection("users").doc(this.uid).
+          collection("diet").doc(this.uid).collection(this.inputdate).valueChanges();
   }
   buildForm() {
     this.form = this._formBuilder.group({
@@ -112,10 +116,12 @@ export class DietPage implements OnInit {
     this.list.push("Carbs : "     + this.carbs),
     this.list.push("Fat : "       + this.fat)
     let data = {
-      Date:this.Date.split('T')[0]+ ":"+this.meal,
-      //Targeted_Calories:this.Targeted_Calories,
+      Date:this.Date.split('T')[0],
       meal:this.list,
-      uid:this.uid
+      Type:this.meal,
+      uid:this.uid,
+      DateType:this.Date.split('T')[0]+":"+this.meal,
+      Targeted_Calories:this.Targeted_Calories,
       }
     this.fireService.saveDiet(data).then(res=>{
       console.log("Diet saved")
