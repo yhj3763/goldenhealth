@@ -23,7 +23,7 @@
 
   <form [formGroup]="form" (ngSubmit)="sendData()">
     <ion-item>
-      <ion-label>Date</ion-label>
+      <ion-label>Date: </ion-label>
       <ion-datetime [(ngModel)]='Date' formControlName="date" displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
     </ion-item>
 
