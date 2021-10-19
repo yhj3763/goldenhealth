@@ -22,3 +22,4 @@ describe('RatePressurePage', () => {
     expect(component).toBeTruthy();
   });
 });
+
