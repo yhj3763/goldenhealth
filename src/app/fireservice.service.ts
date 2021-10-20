@@ -20,9 +20,8 @@ export class FireserviceService {
   }
 
   saveDetails(data) {
-    return this.firestore.collection("users").doc(data.uid).set(data);
+    return this.firestore.collection("users").doc(data.uid).collection('PersonalInfo').doc(data.uid).set(data);
   }
-
   saveDiet(data) {
     return this.firestore.collection("users").doc(data.uid).
     collection("diet").doc(data.uid).collection(data.Date).doc(data.DateType).set(data);
@@ -32,9 +31,7 @@ export class FireserviceService {
     .collection("activity").doc(data.uid).collection(data.Date).doc(data.DateType).set(data);
   }
   getDetails(data) {
-    return this.firestore.collection("users").doc(data.uid).valueChanges();
-  }
-  sendData(data) {
-    return this.firestore.collection("users").add(data);
+    return this.firestore.collection("users").doc(data.uid).collection('PersonalInfo').doc(data.uid).valueChanges();
   }
 }
+
