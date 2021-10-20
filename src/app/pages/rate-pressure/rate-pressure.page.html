@@ -8,28 +8,61 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
+  <!-- (ngSubmit)="sendData()" -->
+  <!-- NOTE: This is a back-up ONLY! Please do not touch code until further notice or instructed-->
+    <form [formGroup]="form"> 
+      <!-- Directions for measuring heartrate -->
+      <ion-item>
+        1. Place your pointer and middle fingers on the side of your 
+        windpipe just below the jawbone. You may need to shift your 
+        fingers until you can easily feel your heart beating.
+
+        2. Count the pulses you feel for 15 seconds.
+
+        3. Multiply this number by 4 to obtain your heart rate
+      </ion-item> 
+
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime formControlName="date" displayFormat="MM DD YY" placeholder="Select Date" [(ngModel)]='Date '></ion-datetime>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Heartbeat: </ion-label>
+        <ion-input formControlName="reps"></ion-input>
+      </ion-item>
+  
+      <!-- *****add time here!!!!***** -->
+  
+      <ion-item>
+        <ion-label position="stacked">Notes: </ion-label>
+        <ion-input formControlName="notes" placeholder="Here I have to..."></ion-input>
+      </ion-item>
+  
+      <ion-button size="default" type="submit" expand="block" [disabled]="!form.valid">SUBMIT MEAL</ion-button>
+    </form>
+  <!-- <ion-item>
     <ion-label><strong>Heartbeat</strong></ion-label>
     <ion-input></ion-input>
-  </ion-item>
+  </ion-item> -->
 
   <!-- Directions for Heart rate -->
-    <ion-item>
+    <!-- <ion-item>
       fire up the app, place the pad of your 
       finger over your phone's camera, then sit 
       quietly and wait a minute
-    </ion-item> 
+    </ion-item>  -->
 
   <!-- Stock photo of potential heart beat senor here! -->
-    <ion-col size="8" size-md="10" size-lg="7">
+    <!-- <ion-col size="8" size-md="10" size-lg="7">
       <img src="../../assets/icon/senorProto.jpg" class="figure-img rounded" alt="...">
-    </ion-col>
+    </ion-col> -->
     
   <!-- Have result here! -->
-    <ion-item>
-      <ion-label position="stacked">Result:</ion-label>
+    <!-- <ion-item>
+      <ion-label position="stacked">Result:</ion-label> -->
       <!-- ***OUTPUT CODE HERE!!!!*** -->
-    </ion-item>
+    <!-- </ion-item> -->
 
 
 
