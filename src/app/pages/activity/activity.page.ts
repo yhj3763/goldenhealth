@@ -11,6 +11,7 @@ interface Workout {
   workout: string,
   sets: string,
   reps: number,
+  time: number,
   notes: string
 }
 // { date: '11/9/69', workout: 'push-ups', sets: '6', reps
@@ -26,6 +27,7 @@ export class ActivityPage implements OnInit {
   public Workout: any;
   public Sets: any;
   public Reps: any;
+  public Time: number;
   public Notes: any;
   form: FormGroup;
   // ngonit function to be assigned
@@ -56,6 +58,7 @@ export class ActivityPage implements OnInit {
       workout: ['', Validators.required],
       sets: ['', Validators.required],
       reps: ['', Validators.required],
+      time: ['', Validators.required],
       notes: ['', Validators.required]
       // userid: [this.userid, Validators.required]
     })
@@ -73,6 +76,7 @@ export class ActivityPage implements OnInit {
     this.workout_list.push("Workout Name: "+this.Workout),
     this.workout_list.push("Sets: "+this.Sets),
     this.workout_list.push("Reps："+this.Reps),
+    this.workout_list.push("Time: "+this.Time),
     this.workout_list.push("Notes: "+this.Notes)
     let data = {
       Date:     this.Date.split('T')[0],

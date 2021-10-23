@@ -29,7 +29,10 @@
       <ion-input formControlName="reps" [(ngModel)]='Reps '></ion-input>
     </ion-item>
 
-    <!-- *****add time here!!!!***** -->
+    <ion-item>
+      <ion-label>Time: </ion-label>
+      <ion-input formControlName="time" [(ngModel)]='Time ' placeholder="minutes"></ion-input>
+    </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Notes: </ion-label>
@@ -42,7 +45,9 @@
     <ion-label>Activity Date</ion-label>
     <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
   </ion-item> -->
-  <div id = 'dispay'>
+
+  <!-- (10/23/21) Changed id below from 'dispay' to 'display' -->
+  <div id = 'display'>
     <!-- <p *ngFor="let user of users | async"> {{user.Date}}{{user.meal[0]}} </p>
     <p *ngFor="let user of users | async"> {{user.meal[0]}} </p>
     <p *ngFor="let user of users | async"> {{user.meal[1]}} </p>
@@ -57,7 +62,7 @@
         <li>{{user.Workout[1]}}</li>
         <li>{{user.Workout[2]}}</li>
         <li>{{user.Workout[3]}}</li>
-
+        <li>{{user.Workout[4]}}</li>
       </ul>
     </div>
   <!-- <ion-list lines="full" class="ion-no-margin">
