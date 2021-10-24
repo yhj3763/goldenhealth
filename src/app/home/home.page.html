@@ -14,19 +14,21 @@
 <!-- (9/30/21): sign-up/sign-in page(s) here -->
 <!-- (10/6/21): Will change later, if possible, to a profile page -->
 <ion-content>
-  <ion-grid>
-    <ion-row class="justify-content-center">
-        <ion-col size="10" size-md="10" size-lg="7">
-          <strong>Golden Health</strong> 
-          <img src="../../assets/icon/image0.jpg.png" class="figure-img rounded" alt="...">
-        </ion-col>
-    </ion-row>
-  </ion-grid>
-  <br>
-  <div>
+  <ion-row>
+    <ion-col size="10" size-md="10" size-lg="7">
+      <strong>Golden Health</strong> 
+      <img src="../../assets/icon/image0.jpg.png" class="figure-img rounded" alt="...">
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-text-center">
+    <ion-col *ngFor="let user of users| async">
+      <strong>{{user.name}}</strong>
+      <!-- <anytype>{{users.(field)}}</anytype> -->
+    </ion-col>
+  <!-- <div>
     <ul *ngFor="let user of users| async">
       <li>{{user.name}}</li>
-      <!-- <anytype>{{users.(field)}}</anytype> -->
     </ul>
-  </div>
+  </div> -->
+  </ion-row>
 </ion-content>
