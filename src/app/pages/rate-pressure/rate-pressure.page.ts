@@ -93,7 +93,7 @@ export class RatePressurePage {
 	const intervals = [];
 	for (let i = 1; i < beats.length; i++) intervals.push(beats[i] - beats[i-1]);
 
-	const heartMeasure = 30000 / (intervals.reduce((a, b) => a + b, 0) / intervals.length);
+	const heartMeasure = 32500 / (intervals.reduce((a, b) => a + b, 0) / intervals.length);
 	heartbeat.innerHTML = (stabilizingCount > beatsLimit)
 		? ` ${heartMeasure.toFixed(0)}`
 		:  ``
@@ -102,7 +102,9 @@ export class RatePressurePage {
 	    :`Please hold the camera. <br/> Value is stabilized: ${stabilizingCount}/${beatsLimit}`
 	}
 	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-	navigator.mediaDevices.getUserMedia({ video:{facingMode: 'enviornment'}} ).then(function(stream) {
+	navigator.mediaDevices.getUserMedia({ video: {
+    facingMode: ["user", "evnironment"]
+  }} ).then(function(stream) {
 	video.srcObject = stream;
 	video.play();
 	});
