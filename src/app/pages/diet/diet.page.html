@@ -29,11 +29,12 @@
 
     <ion-item>
       <ion-label>Meal: </ion-label>
-      <ion-select [(ngModel)]='meal' formControlName="meal">
-        <ng-container *ngFor="let meal of mealTypes">
-          <ion-select-option [value]="meal.name">{{meal.name}}</ion-select-option>
-        </ng-container>
-      </ion-select>
+      <!-- <ion-select [(ngModel)]='meal' formControlName="meal">
+        <ng-container *ngFor="let meal of mealTypes"> -->
+          <!-- <ion-select-option>{{meal.name}}</ion-select-option> -->
+          <!-- [value]="meal.name" -->
+        <!-- </ng-container>
+      </ion-select> -->
     </ion-item>
 
     <ion-item>
@@ -83,7 +84,7 @@
 
       <ul *ngFor="let user of users| async">
         <li>{{user.Date}}</li>
-        <li>{{user.meal[0]}}</li>
+        <!-- <li>{{user.meal[0]}}</li> -->
         <li>{{user.meal[1]}}</li>
         <li>{{user.meal[2]}}</li>
         <li>{{user.meal[3]}}</li>
