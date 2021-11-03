@@ -120,7 +120,7 @@ export class DietPage implements OnInit {
       meal:this.list,
       Type:this.meal,
       uid:this.uid,
-      DateType:this.Date.split('T')[0]+":"+this.meal,
+      DateType:this.Date.split('T')[0]+":"+this.meal+":"+this.food,
       Targeted_Calories:this.Targeted_Calories,
       }
     this.fireService.saveDiet(data).then(res=>{
