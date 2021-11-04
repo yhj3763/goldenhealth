@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 
 interface Meal {
   date: number,
-  // type: string,
+  type: string,
   food: string,
   calories: number,
   protein: number,
@@ -26,7 +26,7 @@ export class DietPage implements OnInit {
   //userinput
   public Date:any;
   public Targeted_Calories:any;
-  // public meal:string;
+  public meal:string;
   public food:any;
   public calories:any;
   public protein:any;
@@ -45,16 +45,16 @@ export class DietPage implements OnInit {
   // ngonit function to be assigned
   //private userid: number;
 
-  // mealTypes: Array<object> = [
-  //   { name: 'Breakfast'},
-  //   { name: 'Lunch'},
-  //   { name: 'Dinner'},
-  //   { name: 'Post Workout'},
-  //   { name: 'Pre Workout'},
-  //   { name: 'Snack'}
-  // ];
+  mealTypes: Array<object> = [
+    { name: 'Breakfast'},
+    { name: 'Lunch'},
+    { name: 'Dinner'},
+    { name: 'Post Workout'},
+    { name: 'Pre Workout'},
+    { name: 'Snack'}
+  ];
 
-  // meals: Array<Meal> = [];
+  meals: Array<Meal> = [];
   list: Array<any> = [];
   /**list
    [0] meal type
@@ -94,7 +94,7 @@ export class DietPage implements OnInit {
   buildForm() {
     this.form = this._formBuilder.group({
       date: ['', Validators.required],
-      // meal: [this.meals, Validators.required],
+      meal: [this.meals, Validators.required],
       food: ['', Validators.required],
       calories: ['', Validators.required],
       protein: ['', Validators.required],
@@ -109,7 +109,7 @@ export class DietPage implements OnInit {
     // this.meals.push()
   }
   sendData() {
-    // this.list.push("Meal : "      + this.meal),
+    this.list.push("Meal : "      + this.meal),
     this.list.push("Food : "      + this.food),
     this.list.push("Calories : "  + this.calories),
     this.list.push("Protein : "   + this.protein),
@@ -118,7 +118,7 @@ export class DietPage implements OnInit {
     let data = {
       Date:this.Date.split('T')[0],
       meal:this.list,
-      // Type:this.meal,
+      Type:this.meal,
       uid:this.uid,
       DateType:this.Date.split('T')[0]+":"+this.meal+":"+this.food,
       Targeted_Calories:this.Targeted_Calories,
@@ -137,7 +137,7 @@ export class DietPage implements OnInit {
     getdata(){
       this.firestore.collection("users").doc(this.uid).collection("diet").
         valueChanges().subscribe((response) => {
-        console.log('reponse ', response);
+        console.log('response ', response);
         //(document.getElementById('display') as HTMLFormElement).innerhtml = response[0][0];*/
       })
     }
