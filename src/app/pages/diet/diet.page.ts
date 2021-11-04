@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 
 interface Meal {
   date: number,
-  type: string,
+  // type: string,
   food: string,
   calories: number,
   protein: number,
@@ -26,7 +26,7 @@ export class DietPage implements OnInit {
   //userinput
   public Date:any;
   public Targeted_Calories:any;
-  public meal:any;
+  // public meal:string;
   public food:any;
   public calories:any;
   public protein:any;
@@ -45,16 +45,16 @@ export class DietPage implements OnInit {
   // ngonit function to be assigned
   //private userid: number;
 
-  mealTypes: Array<object> = [
-    { name: 'Breakfast'},
-    { name: 'Lunch'},
-    { name: 'Dinner'},
-    { name: 'Post Workout'},
-    { name: 'Pre Workout'},
-    { name: 'Snack'}
-  ];
+  // mealTypes: Array<object> = [
+  //   { name: 'Breakfast'},
+  //   { name: 'Lunch'},
+  //   { name: 'Dinner'},
+  //   { name: 'Post Workout'},
+  //   { name: 'Pre Workout'},
+  //   { name: 'Snack'}
+  // ];
 
-  meals: Array<Meal> = [];
+  // meals: Array<Meal> = [];
   list: Array<any> = [];
   /**list
    [0] meal type
@@ -94,7 +94,7 @@ export class DietPage implements OnInit {
   buildForm() {
     this.form = this._formBuilder.group({
       date: ['', Validators.required],
-      meal: [this.meals, Validators.required],
+      // meal: [this.meals, Validators.required],
       food: ['', Validators.required],
       calories: ['', Validators.required],
       protein: ['', Validators.required],
@@ -106,10 +106,10 @@ export class DietPage implements OnInit {
   }
 
   buildarray(){
-    this.meals.push()
+    // this.meals.push()
   }
   sendData() {
-    this.list.push("Meal : "      + this.meal),
+    // this.list.push("Meal : "      + this.meal),
     this.list.push("Food : "      + this.food),
     this.list.push("Calories : "  + this.calories),
     this.list.push("Protein : "   + this.protein),
@@ -118,7 +118,7 @@ export class DietPage implements OnInit {
     let data = {
       Date:this.Date.split('T')[0],
       meal:this.list,
-      Type:this.meal,
+      // Type:this.meal,
       uid:this.uid,
       DateType:this.Date.split('T')[0]+":"+this.meal+":"+this.food,
       Targeted_Calories:this.Targeted_Calories,
@@ -171,33 +171,9 @@ export class DietPage implements OnInit {
 }
 
 addData()
-{
-  this.barChart.data.datasets[0].data.push(this.calories);
-  this.barChart.data.labels.push("test");
-  this.barChart.update();
-}
-
-  // btnClicked() {
-  //   console.log('btn Clicked. Yeaaaahhhh!');
-  //   //this.createBarChart();
-  //   this.showMeal = !this.showMeal;
-  // }
-
-  // mealClicked() {
-  //   console.log('testing!');
-  //   this.showFood = !this.showFood;
-  // }
-
-  // macrosClicked() {
-  //   console.log('testing, again!');
-  //   this.showFood = !this.showFood;
-  //   this.showMacros = !this.showMacros;
-  // }
-
-  // addClicked() {
-  //   console.log('testing, again, again!');
-  //   this.showMeal = !this.showMeal;
-  //   this.showMacros = !this.showMacros;
-  //   this.showInput = !this.showInput;
-  // }
+  {
+    this.barChart.data.datasets[0].data.push(this.calories);
+    this.barChart.data.labels.push("test");
+    this.barChart.update();
+  }
 }
