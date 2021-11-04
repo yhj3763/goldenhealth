@@ -13,15 +13,29 @@
 
 <!-- (test dummy -->
 <ion-content>
-  <ion-row>
-    <ion-col size="10" size-md="10" size-lg="7">
-      <strong>Golden Health</strong> 
+  <ion-row class="ion-text-center">
+    <ion-col size="12" size-md="10" size-lg="7" >
+      <strong style="font-size: 30px;">Golden Health</strong> 
+    </ion-col>
+    <ion-col size="12" size-md="10" size-lg="7">
       <img src="../../assets/icon/image0.jpg.png" class="figure-img rounded" alt="...">
     </ion-col>
   </ion-row>
   <ion-row class="ion-text-center">
     <ion-col *ngFor="let user of users| async">
-      <strong>{{user.name}}</strong>
+      <strong style="font-size: 25px;">Welcome: </strong>
+      <strong style="font-size: 25px;">{{user.name}}</strong>
+      <br>
+      <br>
+      <strong style="font-size: 25px;">{{user.email}}</strong>
+      <br>
+      <br>
+
+      <strong style="font-size: 25px;">Your BMI: </strong>
+      <strong style="font-size: 25px;">{{bmi}}</strong>
+      <br>
+      <br>
+
       <!-- <anytype>{{users.(field)}}</anytype> -->
     </ion-col>
   <!-- <div>

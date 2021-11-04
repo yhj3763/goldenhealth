@@ -14,6 +14,10 @@ import { FireserviceService } from '../fireservice.service';
 export class HomePage implements OnInit{
   private uid = this.logininfo.uid();
   users: Observable<any>;
+  info: Observable<any>;
+  public data: any;
+  public height: any;
+  public bmi:any;
   constructor(
     public router:Router,
     public fireService:FireserviceService, 
@@ -22,7 +26,15 @@ export class HomePage implements OnInit{
   ) {}
   ngOnInit() {
     this.users = this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").valueChanges();
-
-  }
+    this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").doc(this.uid)
+                  .valueChanges().subscribe(res => {
+                    console.log(res);
+                    this.data = res;
+                    var kgweight = this.data['weight']/2.205;
+                    var BMI = (kgweight/(this.data['height']/100 * this.data['height']/100)).toFixed(2);
+                    console.log(BMI); 
+                    this.bmi = BMI;
+    }); 
+ }
   
 }

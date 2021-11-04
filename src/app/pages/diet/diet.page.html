@@ -29,12 +29,15 @@
 
     <ion-item>
       <ion-label>Meal: </ion-label>
-      <!-- <ion-select [(ngModel)]='meal' formControlName="meal">
-        <ng-container *ngFor="let meal of mealTypes"> -->
-          <!-- <ion-select-option>{{meal.name}}</ion-select-option> -->
-          <!-- [value]="meal.name" -->
-        <!-- </ng-container>
-      </ion-select> -->
+      <ion-select [(ngModel)]='meal' formControlName="meal">
+          <ion-select-option >Breakfast</ion-select-option>
+          <ion-select-option >Lunch</ion-select-option>
+          <ion-select-option >Dinner</ion-select-option>
+          <ion-select-option >Post Workout</ion-select-option>
+          <ion-select-option >Pre Workout</ion-select-option>
+          <ion-select-option >Snacks</ion-select-option>
+    
+      </ion-select>
     </ion-item>
 
     <ion-item>
