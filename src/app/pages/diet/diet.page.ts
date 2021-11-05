@@ -72,7 +72,7 @@ export class DietPage implements OnInit {
   todaydate = new Date()
   inputdate = this.todaydate.getFullYear() + "-" + 
               (this.todaydate.getMonth()+1) + "-"+
-              this.todaydate.getDate()
+              (("0" + this.todaydate.getDate()).slice(-2))
   @ViewChild('barChart') barChart;
   public targetedCalories: number;
   constructor(
