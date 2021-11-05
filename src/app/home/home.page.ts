@@ -36,5 +36,11 @@ export class HomePage implements OnInit{
                     this.bmi = BMI;
     }); 
  }
+  logout(){
+  //this.fireService.logout();
+  const test_id = this.uid;
+  localStorage.removeItem('test_id');
+  this.router.navigateByUrl('');
+}
   
 }
