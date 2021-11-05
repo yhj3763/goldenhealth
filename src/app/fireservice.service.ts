@@ -15,6 +15,10 @@ export class FireserviceService {
     return this.auth.signInWithEmailAndPassword(data.email, data.password);
   }
 
+  logout(){
+    this.auth.signOut();
+  }
+  
   signup(data) {
     return this.auth.createUserWithEmailAndPassword(data.email, data.password);
   }
