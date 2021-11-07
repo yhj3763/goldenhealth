@@ -32,7 +32,9 @@ export class DietPage implements OnInit {
   public protein:any;
   public carbs:any;
   public fat:any;
-  
+  public todaytarget:any;
+  public data: any;
+
   users: Observable<any>;
 
 
@@ -44,15 +46,7 @@ export class DietPage implements OnInit {
   form: FormGroup;
   // ngonit function to be assigned
   //private userid: number;
-
-  mealTypes: Array<object> = [
-    { name: 'Breakfast'},
-    { name: 'Lunch'},
-    { name: 'Dinner'},
-    { name: 'Post Workout'},
-    { name: 'Pre Workout'},
-    { name: 'Snack'}
-  ];
+  targetC: FormGroup;
 
   meals: Array<Meal> = [];
   list: Array<any> = [];
@@ -71,8 +65,8 @@ export class DietPage implements OnInit {
   private uid = this.logininfo.uid();
   todaydate = new Date()
   inputdate = this.todaydate.getFullYear() + "-" + 
-              (this.todaydate.getMonth()+1) + "-"+
-              (("0" + this.todaydate.getDate()).slice(-2))
+            (("0" + (this.todaydate.getMonth() + 1)).slice(-2)) + "-"+
+            (("0" + this.todaydate.getDate()).slice(-2))
   @ViewChild('barChart') barChart;
   public targetedCalories: number;
   constructor(
@@ -90,7 +84,26 @@ export class DietPage implements OnInit {
     console.log(this.inputdate);
     this.users = this.firestore.collection("users").doc(this.uid).
           collection("diet").doc(this.uid).collection(this.inputdate).valueChanges();
+    this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid).collection(this.inputdate+":Target").doc("TargetCalories").valueChanges().subscribe(res => {
+            console.log(res);
+            this.data = res;
+            var temp = this.data['targeted_Calories'];
+            this.todaytarget = temp;
+          }); 
   }
+  /*
+  get variables from diet
+      this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid).collection(this.inputdate).valueChanges().subscribe(res => {
+            this.data = res;
+            this."your variables" = this.data['""variabel name in firebase'];
+            this."your variables" = this.data['calories'];
+            this."your variables" = this.data['protein'];
+            this."your variables" = this.data['carbs'];
+            this."your variables" = this.data['fat'];
+            //the your variable will have the datas 
+          }); 
+
+  */
   buildForm() {
     this.form = this._formBuilder.group({
       date: ['', Validators.required],
@@ -103,11 +116,11 @@ export class DietPage implements OnInit {
       // userid: [this.userid, Validators.required]
       // targetedCalories: ['', Validators.required]
     })
+    this.targetC = this._formBuilder.group({
+      Targeted_Calories:['', Validators.required]
+    })
   }
 
-  buildarray(){
-    // this.meals.push()
-  }
   sendData() {
     this.list.push("Meal : "      + this.meal),
     this.list.push("Food : "      + this.food),
@@ -121,7 +134,6 @@ export class DietPage implements OnInit {
       Type:this.meal,
       uid:this.uid,
       DateType:this.Date.split('T')[0]+":"+this.meal+":"+this.food,
-      Targeted_Calories:this.Targeted_Calories,
       }
     this.fireService.saveDiet(data).then(res=>{
       console.log("Diet saved")
@@ -132,6 +144,27 @@ export class DietPage implements OnInit {
       });  
     
     }
+    //get targetcalories
+
+    //save targetcalories
+    saveTargetCalories(){
+      let data = {
+        Date:this.inputdate,
+        uid:this.uid,
+        targeted_Calories:this.Targeted_Calories,
+        }
+      this.fireService.savetaget(data).then(res=>{
+        console.log("Target saved")
+        location.reload();
+        },err=>{
+          console.log('error')
+          console.log(err);
+        });  
+    }
+
+
+
+
 
     //getdatafrom firebase base on today 
     getdata(){
