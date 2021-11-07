@@ -35,7 +35,7 @@ export class ActivityPage implements OnInit {
   users: Observable<any>;
   todaydate = new Date();
   inputdate = this.todaydate.getFullYear() + "-" + 
-              (this.todaydate.getMonth()+1) + "-"+
+              (("0" + (this.todaydate.getMonth() + 1)).slice(-2)) + "-"+
               (("0" + this.todaydate.getDate()).slice(-2))
   constructor(    
     public router:Router,
