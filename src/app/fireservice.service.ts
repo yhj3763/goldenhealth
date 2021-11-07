@@ -30,6 +30,10 @@ export class FireserviceService {
     return this.firestore.collection("users").doc(data.uid).
     collection("diet").doc(data.uid).collection(data.Date).doc(data.DateType).set(data);
   }
+  savetaget(data){
+    return this.firestore.collection("users").doc(data.uid).
+    collection("diet").doc(data.uid).collection(data.Date+":Target").doc('TargetCalories').set(data);
+  }
   saveActivity(data) {
     return this.firestore.collection("users").doc(data.uid)
     .collection("activity").doc(data.uid).collection(data.Date).doc(data.DateType).set(data);
