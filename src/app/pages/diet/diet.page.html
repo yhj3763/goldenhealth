@@ -15,11 +15,19 @@
     <ion-datetime displayFormat="MM DD YY" placeholder="Select Date" [(ngModel)]='Date '></ion-datetime>
   </ion-item> -->
 
-  <ion-item>
-    <ion-label position="floating">Targeted Calories</ion-label>
-    <ion-input type="number" [(ngModel)]='Targeted_Calories'></ion-input>
-  </ion-item>
 
+    <form [formGroup]="targetC" (ngSubmit)="saveTargetCalories()" padding-right>
+      <ion-item>
+        <ion-label position="floating">Targeted Calories</ion-label>
+        <ion-input type="number" [(ngModel)]='Targeted_Calories' formControlName='Targeted_Calories'></ion-input>
+      </ion-item>
+      <ion-button type="submit" color="primary" expand="block" [disabled]="!targetC.valid">Set daily Target</ion-button>
+    </form>
+    <ion-item>
+      <div>Your Target Calories For Today: </div>
+      <div>{{todaytarget}}</div>
+    </ion-item>
+    <br>
 
   <form [formGroup]="form" (ngSubmit)="sendData()">
     <ion-item>
