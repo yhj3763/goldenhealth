@@ -50,6 +50,7 @@ export class DietPage implements OnInit {
 
   meals: Array<Meal> = [];
   list: Array<any> = [];
+  testing: Array<any> = [];
   /**list
    [0] meal type
    [1] food name
@@ -174,39 +175,219 @@ export class DietPage implements OnInit {
         //(document.getElementById('display') as HTMLFormElement).innerhtml = response[0][0];*/
       })
     }
-  createBarChart()
-  {
-    this.barChart = new Chart(this.barChart.nativeElement, {
-    type: 'bar',
-    data: {
-      labels: ["Targeted"],
-      datasets: [{
-        label: 'Targeted vs Eaten Calories',
-        barPercentage: 0.8,
-        barThickness: 20,
-        minBarLength: 2,
-        data: [this.targetedCalories],
-        backgroundColor: [
-          'rgb(38,194, 129)',
-          'rgb(38,194, 129)',
-          'rgb(38,194, 129)'
-        ]
-      }]
-    },
-    options: {
-      scales: {
-          y: {
-            beginAtZero: true
+  createBarChart(){
+      this.barChart = new Chart(this.barChart.nativeElement, {
+        type: 'bar',
+        data: {
+          labels: [],
+          datasets: [
+            {
+              label: 'Breakfast',
+              data: [],
+              backgroundColor: [
+                'rgb(209, 25, 19)'
+              ],
+              maxBarThickness: 50,
+              stack: 'Stack 0'
+            },
+            {
+              label: 'Lunch',
+              data: [],
+              backgroundColor:[
+                'rgb(242, 242, 24)'
+              ],
+              maxBarThickness: 50,
+              stack: 'Stack 0'
+            },
+            {
+              label: 'Dinner',
+              data: [],
+              backgroundColor:[
+                'rgb(325, 170, 90)'
+              ],
+              maxBarThickness: 50,
+              stack: 'Stack 0'
+            },
+            {
+              label: 'Snacks',
+              data: [],
+              backgroundColor:[
+                'rgb(39, 245, 238)'
+              ],
+              maxBarThickness: 50,
+              stack: 'Stack 0'
+            },
+            {
+              label: 'Workout',
+              data: [],
+              backgroundColor:[
+                'rgb(33, 196, 77)'
+              ],
+              maxBarThickness: 50,
+              stack: 'Stack 0'
+            },
+            {
+              label: 'Targeted',
+              data: [],
+              backgroundColor:[
+                'rgb(400, 222, 80)'
+              ],
+              maxBarThickness: 50,
+              stack: 'Stack 1'
+            }
+          ]
+        },
+        options: {
+          scales: {
+              x:{
+                stacked: true,
+              },
+              y: {
+                beginAtZero: true,
+                stacked: true
+              }
           }
-      }
-    },
-  });
-}
+        }
+      });
+    }
+
+    addTargetedData()
+  {
+    var chartdata;
+    var chartdate;
+    this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid).collection(this.inputdate+":Target")
+    .doc("TargetCalories").valueChanges().subscribe(res => {
+      console.log(res)
+      this.graphdata = res;
+      console.log(this.graphdata)
+      var datedata = this.graphdata['Date'];
+      console.log(datedata)
+
+      var datachart = this.graphdata['targeted_Calories'];
+      console.log(datachart)
+
+      chartdata = datachart;
+      console.log(chartdata)
+
+      chartdate = datedata;
+      console.log(chartdate)
+
+      this.barChart.data.labels.push(chartdate);
+      this.barChart.data.datasets[5].data.push(chartdata);
+      this.barChart.update();
+    });
+  }
 
 addData()
   {
-    this.barChart.data.datasets[0].data.push(this.calories);
-    this.barChart.data.labels.push("test");
+    var datafoodbuffer;
+    var datafoodbuffer2;
+    var foodtype: Array<any> = [];
+    var foodcalarraybreakfast: Array<any> = [];
+    var foodcalarraylunch: Array<any> = [];
+    var foodcalarraydinner: Array<any> = [];
+    var foodcalarraysnacks: Array<any> = [];
+    var foodcalarrayworkout: Array<any> = [];
+    var foodarraybuf;
+    var foodcaloriebuffer: number;
+    var foodstringbuffer;
+    var numberbufferbreakfast: number;
+    var numberbufferlunch: number;
+    var numberbufferdinner: number;
+    var numberbuffersnacks: number;
+    var numberbufferworkout: number;
+    this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid).collection(this.inputdate)
+    .valueChanges().subscribe(res => {
+      console.log(res)
+      this.testing.push(res)
+      console.log(this.testing)
+      /*console.log(this.testing[0])*/
+      console.log(this.testing[0].length)
+      for(var i = 0; i<this.testing[0].length;i++){
+        console.log(this.testing[0][i]['meal'][0])
+      datafoodbuffer = this.testing[0][i]['meal'][0]
+      datafoodbuffer2 = this.testing[0][i]['meal'][2]
+      foodtype.push(datafoodbuffer.split(':')[1]+':'+datafoodbuffer2.split(':')[1]);
+      console.log(foodtype);
+    }
+    for(var j = 0; j<foodtype.length; j++)
+    {
+      foodarraybuf = foodtype[j];
+      console.log(foodarraybuf.split(':'));
+      foodstringbuffer = foodarraybuf.split(':')[0];
+      console.log(foodstringbuffer);
+      if(foodstringbuffer === " Breakfast")
+      {
+        foodcaloriebuffer = parseInt(foodarraybuf.split(':')[1], 10);
+        foodcalarraybreakfast.push(foodcaloriebuffer);
+        for(var k = 0; k<foodcalarraybreakfast.length; k++)
+        {
+          numberbufferbreakfast = foodcalarraybreakfast.reduce((a, b) => a+b, 0);
+        }
+        foodcaloriebuffer = 0;
+      }
+      if(foodstringbuffer === " Lunch")
+      {
+        foodcaloriebuffer = parseInt(foodarraybuf.split(':')[1], 10);
+        foodcalarraylunch.push(foodcaloriebuffer);
+        for(var l = 0; l<foodcalarraylunch.length; l++)
+        {
+          numberbufferlunch = foodcalarraylunch.reduce((a, b) => a+b, 0);
+        }
+        foodcaloriebuffer = 0;
+      }
+      if(foodstringbuffer === " Dinner")
+      {
+        foodcaloriebuffer = parseInt(foodarraybuf.split(':')[1], 10);
+        foodcalarraydinner.push(foodcaloriebuffer);
+        for(var g = 0; g<foodcalarraydinner.length; g++)
+        {
+          numberbufferdinner = foodcalarraydinner.reduce((a, b) => a+b, 0);
+        }
+        foodcaloriebuffer = 0;
+      }
+      if(foodstringbuffer === " Pre Workout")
+      {
+        foodcaloriebuffer = parseInt(foodarraybuf.split(':')[1], 10);
+        foodcalarrayworkout.push(foodcaloriebuffer);
+        for(var g = 0; g<foodcalarrayworkout.length; g++)
+        {
+          numberbufferworkout = foodcalarrayworkout.reduce((a, b) => a+b, 0);
+        }
+        foodcaloriebuffer = 0;
+      }
+      if(foodstringbuffer === " Post Workout")
+      {
+        foodcaloriebuffer = parseInt(foodarraybuf.split(':')[1], 10);
+        foodcalarrayworkout.push(foodcaloriebuffer);
+        for(var g = 0; g<foodcalarrayworkout.length; g++)
+        {
+          numberbufferworkout = foodcalarrayworkout.reduce((a, b) => a+b, 0);
+        }
+        foodcaloriebuffer = 0;
+      }
+      if(foodstringbuffer === " Snacks")
+      {
+        foodcaloriebuffer = parseInt(foodarraybuf.split(':')[1], 10);
+        foodcalarraysnacks.push(foodcaloriebuffer);
+        for(var v = 0; v<foodcalarraysnacks.length; v++)
+        {
+          numberbuffersnacks = foodcalarraysnacks.reduce((a, b) => a+b, 0);
+        }
+        foodcaloriebuffer = 0;
+      }
+    }
+    this.barChart.data.datasets[0].data.push(numberbufferbreakfast);
+    this.barChart.data.datasets[1].data.push(numberbufferlunch);
+    this.barChart.data.datasets[2].data.push(numberbufferdinner);
+    this.barChart.data.datasets[3].data.push(numberbuffersnacks);
+    this.barChart.data.datasets[4].data.push(numberbufferworkout);
     this.barChart.update();
-  }
+    foodcalarraybreakfast = [];
+    foodcalarraylunch = [];
+    foodcalarraydinner = [];
+    foodcalarraysnacks = [];
+    foodcalarraysnacks = [];
+    });
+}
 }
