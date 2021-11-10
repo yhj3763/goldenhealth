@@ -91,6 +91,12 @@ export class DietPage implements OnInit {
             var temp = this.data['targeted_Calories'];
             this.todaytarget = temp;
           }); 
+    this.addTargetedData();
+    this.addData();
+  }
+
+  ionViewWillEnter(){
+    this.createBarChart();
   }
   /*
   get variables from diet
