@@ -34,7 +34,7 @@ export class DietPage implements OnInit {
   public fat:any;
   public todaytarget:any;
   public data: any;
-
+  public graphdata:any;
   users: Observable<any>;
 
 
