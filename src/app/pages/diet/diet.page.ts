@@ -35,6 +35,15 @@ export class DietPage implements OnInit {
   public todaytarget:any;
   public data: any;
   public graphdata:any;
+  // New inputs below - Alex
+  public satfat:any;
+  public monofat:any;
+  public polyfat:any;
+  public fiber:any;
+  public sugar:any;
+  public sodium:any;
+  public cholesterol:any;
+  public netcarbs:any;
   users: Observable<any>;
 
 
