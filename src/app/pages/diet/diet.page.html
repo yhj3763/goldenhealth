@@ -30,6 +30,10 @@
     <br>
 
   <form [formGroup]="form" (ngSubmit)="sendData()">
+
+    <!-- ---- -->
+    <!-- Accordion List button here!!! -->
+    <!-- ---- -->
     <ion-item>
       <ion-label>Date: </ion-label>
       <ion-datetime [(ngModel)]='Date' formControlName="date" displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
