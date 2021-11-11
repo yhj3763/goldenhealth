@@ -16,6 +16,7 @@ interface Meal {
   protein: number,
   carbs: number,
   fat: number
+  // satfat: number
 }
 @Component({
   selector: 'app-diet',
@@ -129,6 +130,8 @@ export class DietPage implements OnInit {
       protein: ['', Validators.required],
       carbs: ['', Validators.required],
       fat: ['', Validators.required]
+      // satfat: ['', Validators.required]
+
       // userid: [this.userid, Validators.required]
       // targetedCalories: ['', Validators.required]
     })
@@ -144,6 +147,8 @@ export class DietPage implements OnInit {
     this.list.push("Protein : "   + this.protein),
     this.list.push("Carbs : "     + this.carbs),
     this.list.push("Fat : "       + this.fat)
+    // this.list.push("Sat. Fat : "   + this.satfat)
+
     let data = {
       Date:this.Date.split('T')[0],
       meal:this.list,
