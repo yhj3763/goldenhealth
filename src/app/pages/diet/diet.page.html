@@ -15,6 +15,21 @@
     <ion-datetime displayFormat="MM DD YY" placeholder="Select Date" [(ngModel)]='Date '></ion-datetime>
   </ion-item> -->
 
+    <!-- ---- -->
+    <!-- Accordion List button here!!! -->
+    <!-- (11/12/21) (Note to self): DON"T PUSH UNTIL IT WORKS STUPID!!!! -->
+    <!-- <div id="faq">
+      <ion-item>
+        <ion-label>Funny1: </ion-label>
+        <ion-input [(ngModel)]='food' formControlName="food"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Funny2: </ion-label>
+        <ion-input [(ngModel)]='calories' formControlName="calories"></ion-input>
+      </ion-item>
+    </div> -->
+    <!-- ---- -->
 
     <form [formGroup]="targetC" (ngSubmit)="saveTargetCalories()" padding-right>
       <ion-item>
@@ -30,10 +45,6 @@
     <br>
 
   <form [formGroup]="form" (ngSubmit)="sendData()">
-
-    <!-- ---- -->
-    <!-- Accordion List button here!!! -->
-    <!-- ---- -->
     <ion-item>
       <ion-label>Date: </ion-label>
       <ion-datetime [(ngModel)]='Date' formControlName="date" displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
