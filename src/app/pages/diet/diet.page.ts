@@ -129,7 +129,17 @@ export class DietPage implements OnInit {
       calories: ['', Validators.required],
       protein: ['', Validators.required],
       carbs: ['', Validators.required],
-      fat: ['', Validators.required]
+      fat: ['', Validators.required],
+      //additional inputs --Jackie
+      satfat:['', Validators.nullValidator],//ignore if no input 
+      monofat:['', Validators.nullValidator],
+      polyfat:['', Validators.nullValidator],
+      fiber:['', Validators.nullValidator],
+      sugar:['', Validators.nullValidator],
+      sodium:['', Validators.required],
+      cholesterol:['', Validators.required],
+      netcarbs:['', Validators.required]
+
       // satfat: ['', Validators.required]
 
       // userid: [this.userid, Validators.required]
@@ -148,7 +158,40 @@ export class DietPage implements OnInit {
     this.list.push("Carbs : "     + this.carbs),
     this.list.push("Fat : "       + this.fat)
     // this.list.push("Sat. Fat : "   + this.satfat)
-
+    //addition inputs, if undefine/no input it will input no input inteasd of undefine 
+    if (this.satfat == undefined){
+      this.list.push("satfat : No Input"    )
+    }else{
+      this.list.push("satfat : "    + this.satfat)
+    }//monofat
+    if (this.monofat == undefined){
+      this.list.push("monofat : No Input"    )
+    }else{
+      this.list.push("monofat : "    + this.monofat)
+    }//polyfat
+    if (this.polyfat == undefined){
+      this.list.push("polyfat : No Input"    )
+    }else{
+      this.list.push("polyfat : "    + this.polyfat)
+    }//fiber
+    if (this.fiber == undefined){
+      this.list.push("fiber : No Input"    )
+    }else{
+      this.list.push("fiber : "    + this.fiber)
+    }//sugar
+    if (this.sugar == undefined){
+      this.list.push("sugar : No Input"    )
+    }else{
+      this.list.push("sugar : "    + this.sugar)
+    }
+    //this.list.push("satfat : "    + this.satfat),
+    //this.list.push("monofat : "   + this.monofat),
+    //this.list.push("polyfat : "   + this.polyfat),
+    //this.list.push("fiber : "     + this.fiber),
+    //this.list.push("sugar : "     + this.sugar),
+    this.list.push("sodium : "    + this.sodium),
+    this.list.push("cholesterol : "    + this.cholesterol),
+    this.list.push("netcarbs : "  + this.netcarbs)
     let data = {
       Date:this.Date.split('T')[0],
       meal:this.list,
