@@ -10,7 +10,10 @@ export class RatePressurePage {
   constructor() {
   }
 
-  ngOnInit() {// Element declaration
+  ngOnInit() {	
+
+  
+	// Element declaration
 	const canvas = <HTMLCanvasElement> document.getElementById('canvas'); 
 	const colorR = document.getElementById('color-r');
 	const colorG = document.getElementById('color-g');
@@ -20,6 +23,9 @@ export class RatePressurePage {
 	const stable = document.getElementById('stable');
 	const context = canvas.getContext('2d');
 	const video = document.getElementById('video') as HTMLVideoElement;
+
+	//var resetheartbeat=<HTMLFormElement>document.getElementById("heartbeat");
+	//resetheartbeat.reset();
 
 	// Constants declaration
 	const itemsLimit = 100;
@@ -34,13 +40,55 @@ export class RatePressurePage {
 	const beats = [];
 	let stabilizingCount = 0;
 
+	var localstream;
+
+	var oldLength = -1;
+	
+
 	// Initial flexible threshold
 	let threshold = upperThreshold;
+	document.getElementById('startbutton').addEventListener("click", function(){
 
+		if(navigator.mediaDevices.getUserMedia) {
+			navigator.mediaDevices.getUserMedia({ video: {
+			facingMode: ["user"]
+		  }} ).then(function(stream) {
+			localstream = stream;
+			video.srcObject = stream;
+			video.play();
+
+			});
+			}
+		});
+
+		function stopVideoOnly(localstream){
+			localstream.getTracks().forEach(function(track){
+				if(track.readyState =='live' && track.kind =='video'){
+					track.stop();
+				}
+			})
+		}
+
+	
+		function listen(currentLength){
+			if(currentLength != oldLength){
+				stopVideoOnly(localstream);
+			}
+	
+			oldLength = window.history.length;
+			setTimeout(function(){
+				listen(window.history.length);
+			}, 1000);
+		}
+		
+   
 	// Content update for the webpage
 	function updateContent() {
-	context.drawImage(video, 0, 0, 300, 300);
-	const frame = context.getImageData(0, 0, 300, 300);
+					
+	  
+	listen(window.history.length);
+	context.drawImage(video, 0, 0, 500, 500);
+	const frame = context.getImageData(0, 0, 500, 500);
 	const length = frame.data.length / 4;
 	let [r, g, b] = [0, 0, 0];
 	for(let i = 0; i < length; i++) {
@@ -93,24 +141,22 @@ export class RatePressurePage {
 	const intervals = [];
 	for (let i = 1; i < beats.length; i++) intervals.push(beats[i] - beats[i-1]);
 
-	const heartMeasure = 32500 / (intervals.reduce((a, b) => a + b, 0) / intervals.length);
+	const heartMeasure = 30000 / (intervals.reduce((a, b) => a + b, 0) / intervals.length);
 	heartbeat.innerHTML = (stabilizingCount > beatsLimit)
 		? ` ${heartMeasure.toFixed(0)}`
-		:  ``
+		:  ``	
 	stable.innerHTML =(stabilizingCount > beatsLimit)
 	    ? ``
 	    :`Please hold the camera. <br/> Value is stabilized: ${stabilizingCount}/${beatsLimit}`
+   
+    if(stabilizingCount>beatsLimit  )
+	{
+		stopVideoOnly(localstream);
+		
 	}
-	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-	navigator.mediaDevices.getUserMedia({ video: {
-    facingMode: ["user", "evnironment"]
-  }} ).then(function(stream) {
-	video.srcObject = stream;
-	video.play();
-	});
-	}
-
-	setInterval(updateContent, 0);
+  } 
+  
+	setInterval(updateContent, 1);
 
   }
 }
