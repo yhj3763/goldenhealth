@@ -8,47 +8,61 @@
 </ion-header>
   
 <ion-content>
-		<head>
-			<link rel="stylesheet" href="rate-pressure.page.scss">
-			<title>Heartbeat Sensor</title>
-		</head>
-		<body>
-		<main>
-			<main>
-				<div class=	"bpm-display-container">
-					<section id="bpm-display-container">
-						<div class="heart-display">
-							<div class="beatlabel">
-								<output id="beat-label" title="Heart rate"></output>
-							</div>
-							<div class="heartbeat">
-								<output id="heartbeat" title="Heart rate"></output>
-							</div>
-							    <label></label>
-						<div class="bpm-display">
-							<div id="bpm-display">
-								<label>bpm</label>
-							</div>
-						</div>	
-					    
-						</div>	
-					</section>
-				</div>
-
-				<div style="text-align:center;">
-					<div class="stable-display">
-						<output id ="stable" title="Heart rate"></output>
+		  <head>
+			  <link rel="stylesheet" href="rate-pressure.page.scss">
+			  <title>Heartbeat Sensor</title>
+		  </head>
+		  <body>
+		  <main>
+			  <main>
+				  <div class=	"bpm-display-container">
+					  <section id="bpm-display-container">
+						  <div class="heart-display">
+							  <div class="beatlabel">
+								  <output id="beat-label" title="Heart rate"></output>
+							  </div>
+							  <div class="heartbeat">
+								  <output id="heartbeat" title="Heart rate"></output>
+							  </div>
+								  <label></label>
+						  <div class="bpm-display">
+							  <div id="bpm-display">
+								  <label>bpm</label>
+							  </div>
+						  </div>	
+						  
+						  </div>	
+					  </section>
+				  </div>
+                 
+				<div style="position:relative;">
+				  <div style="text-align:center;position:relative;top:-380px;">
+					<div class="button-display">
+						<button id ="startbutton">Press the button to start</button>
 					</div>
 				</div>
-			</main>
-			<ion-list><p hidden id="color-r"></p> <p  hidden id="color-g"></p> <p  hidden id="color-b"></p></ion-list>
-			<ion-list><video hidden id="video" width="200" height="200" autoplay></video></ion-list>
-			<ion-list><canvas hidden id="canvas" width="300" height="300"></canvas></ion-list>
-		</main>
-		<script src="rate-pressure.page.ts"></script>
-		</body>
-		
-  </ion-content>
+			</div>
+				
+				
+				  <div style="text-align:center;">
+					  <div class="stable-display">
+						  <output id ="stable" title="Heart rate"></output>
+					  </div>
+				  </div>
+			  </main>
+			  <ion-list><p hidden id="color-r"></p> <p  hidden id="color-g"></p> <p  hidden id="color-b"></p></ion-list>
+			  <ion-list><video hidden id="video" width="200" height="200" autoplay></video></ion-list>
+			  <ion-list><canvas hidden id="canvas" width="300" height="300"></canvas></ion-list>
+		  </main>
+		  <script src="rate-pressure.page.ts">
+		  </script>
+		  </body>
+		  
+	</ion-content>
+  
+
+
+
 
 
 
