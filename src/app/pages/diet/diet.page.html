@@ -41,6 +41,15 @@
       <div>Your Target Calories For Today: </div>
       <div>{{todaytarget}}</div>
     </ion-item>
+    <!-- <ion-item>
+      <div>Your Target Calories For Today: 
+        <ion-row class="ion-text-center">
+          <ion-col>
+            {{todaytarget}}
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-item> -->
     <br>
 
   <form [formGroup]="form" (ngSubmit)="sendData()">
@@ -182,6 +191,8 @@
         <li>{{user.meal[11]}}</li>
         <li>{{user.meal[12]}}</li>
         <li>{{user.meal[13]}}</li>
+        <ion-button (click)='editmeal()' size="small">Edit</ion-button>
+        <ion-button (click)='deletemeal()' size="small">Delete</ion-button>
       </ul>
     </div>
   <!-- Graph will displace directly bellow following code, preferably a Bar Graph -->
