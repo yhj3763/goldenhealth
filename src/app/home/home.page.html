@@ -25,9 +25,11 @@
     <ion-col *ngFor="let user of users| async">
       <strong style="font-size: 25px;">Welcome: </strong>
       <strong style="font-size: 25px;">{{user.name}}</strong>
+      <ion-button (click)='editname()' size="small">Edit</ion-button>
       <br>
       <br>
       <strong style="font-size: 25px;">{{user.email}}</strong>
+      <ion-button (click)='editemail()' size="small">Edit</ion-button>
       <br>
       <br>
 
@@ -43,6 +45,7 @@
       <li>{{user.name}}</li>
     </ul>
   </div> -->
+
   </ion-row>
 </ion-content>
 <ion-button (click)='logout()' expand='block'>logout</ion-button>
