@@ -25,7 +25,19 @@
     <ion-col *ngFor="let user of users| async">
       <strong style="font-size: 25px;">Welcome: </strong>
       <strong style="font-size: 25px;">{{user.name}}</strong>
-      <ion-button (click)='editname()' size="small">Edied</ion-button>
+      
+        <!-- UI display from code below will ONLY appear if Edit is clicked
+      and will disappear after Cancel or Submit is clicked! -Alex -->
+
+      <ion-button (click)='editname()' size="small">Edit</ion-button>
+      <ion-item>
+        <ion-input placeholder="New name: "></ion-input>
+        <ion-button color="danger" size="small">Cancel</ion-button>
+        <ion-button color="success" size="small">Submit</ion-button>
+      </ion-item>
+
+      <!-- ---- -->
+
       <br>
       <br>
       <strong style="font-size: 25px;">{{user.email}}</strong>
