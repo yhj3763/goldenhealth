@@ -497,10 +497,12 @@ Datasuggestions()
   if(caloriedata <= foodcaloriebuffersuggestion){
     return myContainer.innerHTML = "You have exceded your target calories for the day.";
   }else if(caloriedata >= foodcaloriebuffersuggestion){
-    return myContainer.innerHTML = "You have not yet made your target calories";
+    return myContainer.innerHTML = "You have not yet met your target calories";
   }else{
-    return myContainer.innerHTML = "You have met your target calories";
+    // (11/19/21) code below doesn't work after testing 
+    return myContainer.innerHTML = "You have met your target calories! Good job! :D !!";
   }
   });
 
+ }
 }
