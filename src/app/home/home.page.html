@@ -26,22 +26,29 @@
       <strong style="font-size: 25px;">Welcome: </strong>
       <strong style="font-size: 25px;">{{user.name}}</strong>
       
-        <!-- UI display from code below will ONLY appear if Edit is clicked
+      <!-- UI display from code below will ONLY appear if Edit is clicked
       and will disappear after Cancel or Submit is clicked! -Alex -->
 
       <ion-button (click)='editname()' size="small">Edit</ion-button>
-      <ion-item>
+      <ion-item *ngIf="nameChange">
         <ion-input placeholder="New name: "></ion-input>
         <ion-button color="danger" size="small">Cancel</ion-button>
         <ion-button color="success" size="small">Submit</ion-button>
       </ion-item>
 
-      <!-- ---- -->
+      <!-- Any '*' below will do the same on this page!---- -->
 
       <br>
       <br>
       <strong style="font-size: 25px;">{{user.email}}</strong>
       <ion-button (click)='editemail()' size="small">Edit</ion-button>
+      <ion-item *ngIf="emailChange">
+        <ion-input placeholder="New name: "></ion-input>
+        <ion-button color="danger" size="small">Cancel</ion-button>
+        <ion-button color="success" size="small">Submit</ion-button>
+      </ion-item>
+
+      <!-- Any '*' below will do the same on this page!---- -->
       <br>
       <br>
 

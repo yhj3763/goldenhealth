@@ -18,6 +18,10 @@ export class HomePage implements OnInit{
   public data: any;
   public height: any;
   public bmi:any;
+  public nameChange: boolean;
+  public emailChange: boolean;
+  public hideName: boolean;
+  public hideEmail: boolean;
   constructor(
     public router:Router,
     public fireService:FireserviceService, 
@@ -42,5 +46,14 @@ export class HomePage implements OnInit{
   localStorage.removeItem('test_id');
   this.router.navigateByUrl('');
 }
+  editname() {
+    this.nameChange = !this.nameChange;
+    // this.hideName = !this.hideName;
+  }
+
+  editemail() {
+    this.emailChange = !this.emailChange;
+    // this.hideEmail = !this.hideEmail;
+  }
   
 }
