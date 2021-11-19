@@ -88,16 +88,29 @@ recommendation(){
     // this.hideName = !this.hideName;
   }
 
-  editUserName(){
-    this.nameChange = !this.nameChange;
-  }
-  editname(){
-    let nameChanges = (document.getElementById("changename") as HTMLInputElement).value;
-    this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").doc(this.uid).update({
-      name: nameChanges
-      }); 
-    console.log("Your Name Had been changed to: "+ nameChanges)
-    this.editUserName()
+    editUserName(){
+      this.nameChange = !this.nameChange;
+    }
+    editname(){
+      let nameChanges = (document.getElementById("changename") as HTMLInputElement).value;
+      this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").doc(this.uid).update({
+        name: nameChanges
+        }); 
+      console.log("Your Name Had been changed to: "+ nameChanges)
+      this.editUserName()
+
+    }
+
+    editEmail(){
+      this.emailChange = !this.emailChange;
+    }
+    editemail(){
+      let emailChanges = (document.getElementById("changeemail") as HTMLInputElement).value;
+      this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").doc(this.uid).update({
+        email: emailChanges
+        }); 
+      console.log("Your Email Had been changed to: "+ emailChanges)
+      this.editEmail()
 
     }
 

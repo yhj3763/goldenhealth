@@ -51,6 +51,20 @@
             <ion-button (click)='editname()' color="success" size="small">Submit</ion-button>
           </ion-row>
         </ion-row>
+
+        <!-- update email -->
+        <ion-row style="margin: auto;">        
+          <strong style="font-size: 20px;">Email: </strong>
+          <strong style="font-size: 20px;">{{user.email}}</strong>
+          <ion-button (click)='editEmail()' size="small">Edit email</ion-button>
+          <br>
+          <ion-row *ngIf="emailChange">
+            <ion-input placeholder="New email: " id="changeemail"></ion-input>
+            <ion-button (click)='editEmail()' color="danger" size="small">Cancel</ion-button>
+            <ion-button (click)='editemail()' color="success" size="small">Submit</ion-button>
+          </ion-row>
+        </ion-row>
+
         <!-- update height---- -->
         <ion-row style="margin: auto;">        
           <strong style="font-size: 20px;">Height: </strong>
