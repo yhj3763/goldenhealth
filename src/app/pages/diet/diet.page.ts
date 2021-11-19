@@ -45,6 +45,7 @@ export class DietPage implements OnInit {
   public sodium:any;
   public cholesterol:any;
   public netcarbs:any;
+  public suggestiondata: any;
   users: Observable<any>;
 
 
@@ -61,6 +62,7 @@ export class DietPage implements OnInit {
   meals: Array<Meal> = [];
   list: Array<any> = [];
   testing: Array<any> = [];
+  reccomendation: Array<any> = [];
   /**list
    [0] meal type
    [1] food name
@@ -103,6 +105,7 @@ export class DietPage implements OnInit {
           }); 
     this.addTargetedData();
     this.addData();
+    this.Datasuggestions();
   }
 
   ionViewWillEnter(){
@@ -453,4 +456,51 @@ addData()
     foodcalarraysnacks = [];
     });
 }
+Datasuggestions()
+{
+  var caloriedata: number;
+  var pullcalorie;
+  var datafoodbuffersuggestion; //food calories
+  var foodcalorienumber: number;
+  var foodtype: Array<any> = []; //Data for food type + Calories
+    //var foodarraybuf;
+  var foodcaloriebuffersuggestion: number;
+  this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid).collection(this.inputdate+":Target")
+    .doc("TargetCalories").valueChanges().subscribe(res => {
+      this.suggestiondata = res;
+    pullcalorie = this.suggestiondata['targeted_Calories']; //pulled data from firebase
+    caloriedata = pullcalorie; //targeted calories
+    });
+      //total calories for the day :(
+    this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid).collection(this.inputdate)
+    .valueChanges().subscribe(res => {
+      //console.log(res)
+      this.reccomendation.push(res)
+      //console.log(this.testing)
+      /*console.log(this.testing[0])*/
+      //console.log(this.testing[0].length)
+      for(var i = 0; i < this.reccomendation[0].length; i++){
+      //console.log(this.testing[0][i]['meal'][0])
+      datafoodbuffersuggestion = this.reccomendation[0][i]['meal'][2]
+      foodcalorienumber = parseInt(datafoodbuffersuggestion.split(': ')[1], 10);
+      foodtype.push(foodcalorienumber);
+      console.log(foodtype);
+    }
+  for(var p = 0; p<foodtype.length; p++)
+  {
+    foodcaloriebuffersuggestion = foodtype.reduce((a,b) => a+b, 0);
+    console.log(foodcaloriebuffersuggestion);
+  }
+
+  let myContainer = document.getElementById('reccomendation') as HTMLInputElement;
+  //if statements
+  if(caloriedata <= foodcaloriebuffersuggestion){
+    return myContainer.innerHTML = "You have exceded your target calories for the day.";
+  }else if(caloriedata >= foodcaloriebuffersuggestion){
+    return myContainer.innerHTML = "You have not yet made your target calories";
+  }else{
+    return myContainer.innerHTML = "You have met your target calories";
+  }
+  });
+
 }
