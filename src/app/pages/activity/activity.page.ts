@@ -91,4 +91,63 @@ export class ActivityPage implements OnInit {
         console.log(err);
       });
   }
+
+  // edit functions below
+  // (11/20/21) Will have functions implemented soon 
+
+  // editactivityinfo() {
+  //   this.updateActivityInfo = !this.updateActivityInfo;
+  //   // this.hideName = !this.hideName;
+  // }
+
+  //   editWorkoutName(){
+  //     this.workoutChange = !this.workoutChange;
+  //   }
+  //   editname(){
+  //     let workoutNameChanges = (document.getElementById("workoutname") as HTMLInputElement).value;
+  //     this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").doc(this.uid).update({
+  //       name: workoutNameChanges
+  //       }); 
+  //     console.log("Your Name Had been changed to: "+ workoutNameChanges)
+  //     this.editWorkoutName()
+
+  //   }
+
+  //   editEmail(){
+  //     this.emailChange = !this.emailChange;
+  //   }
+  //   editemail(){
+  //     let emailChanges = (document.getElementById("changeemail") as HTMLInputElement).value;
+  //     this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").doc(this.uid).update({
+  //       email: emailChanges
+  //       }); 
+  //     console.log("Your Email Had been changed to: "+ emailChanges)
+  //     this.editEmail()
+
+  //   }
+
+  //   editUserHeight(){
+  //     this.HeightChange = !this.HeightChange;
+  //   }
+  //   editHeight(){
+  //     let HeightChanges = (document.getElementById("changeHeight") as HTMLInputElement).value;
+  //     this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").doc(this.uid).update({
+  //       height: HeightChanges
+  //       }); 
+  //     console.log("Your Height Had been changed"+ HeightChanges)
+  //     this.editUserHeight()
+  //     }
+
+  //     editUserWeight(){
+  //       this.WeightChange = !this.WeightChange;
+  //     }
+  //     editWeight(){
+  //       let WeightChanges = (document.getElementById("changeWeight") as HTMLInputElement).value;
+  //       this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").doc(this.uid).update({
+  //         weight: WeightChanges
+  //         }); 
+  //         console.log("Your Weight Had been changed"+ WeightChanges)
+  //         this.editUserWeight()
+          
+  //       }
 }
