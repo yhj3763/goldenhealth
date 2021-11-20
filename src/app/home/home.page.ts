@@ -29,6 +29,10 @@ export class HomePage implements OnInit{
 
 
   public emailChange: boolean;
+  hidePassword = true;
+  passwordToggleIcon = 'eye-off';
+
+
   public hideName: boolean;
   public hideEmail: boolean;
 
@@ -101,18 +105,39 @@ recommendation(){
 
     }
 
-    editEmail(){
+
+
+    editUserEmail(){
       this.emailChange = !this.emailChange;
     }
     editemail(){
       let emailChanges = (document.getElementById("changeemail") as HTMLInputElement).value;
+      let oldemail = (document.getElementById("oldemail") as HTMLInputElement).value;
+      let password = (document.getElementById("password") as HTMLInputElement).value;
+      this.fireService.auth
+        .signInWithEmailAndPassword(oldemail, password)
+        .then(function(userCredential) {
+            userCredential.user.updateEmail(emailChanges)
+        })
       this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").doc(this.uid).update({
         email: emailChanges
-        }); 
+          }); 
       console.log("Your Email Had been changed to: "+ emailChanges)
-      this.editEmail()
 
     }
+    public getType() {
+      return this.hidePassword ? 'password' : 'text';
+    }
+    togglePassword(){
+      this.hidePassword = !this.hidePassword;
+      if(this.passwordToggleIcon == 'eye-off'){
+        this.passwordToggleIcon = 'eye';
+      }else{
+        this.passwordToggleIcon = 'eye-off';
+      }
+      return;
+    }
+
 
     editUserHeight(){
       this.HeightChange = !this.HeightChange;
