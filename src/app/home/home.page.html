@@ -40,75 +40,74 @@
       <ion-button (click)='editpersonalinfo()' size="small">Edit Personal Info</ion-button>
       <ion-row *ngIf="updatePersonalInfo">
         <!-- update name---- -->
-        <ion-rol style="margin: auto;">        
+        <ion-col style="margin: auto;">        
           <strong style="font-size: 20px;">Name: </strong>
           <strong style="font-size: 20px;">{{user.name}}</strong>
           <ion-button (click)='editUserName()' size="small">Edit name</ion-button>
-          <br>
-          <ion-rol *ngIf="nameChange">
+          <ion-col *ngIf="nameChange">
             <ion-input placeholder="New name: " id="changename"></ion-input>
             <ion-button (click)='editUserName()' color="danger" size="small">Cancel</ion-button>
             <ion-button (click)='editname()' color="success" size="small">Submit</ion-button>
-          </ion-rol>
-        </ion-rol>
+          </ion-col>
+        </ion-col>
 
         <!-- update email -->
-        <ion-row style="margin: auto;">  
-          <ion-rol>
+        <ion-col style="margin: auto;">  
+          <ion-col>
             <strong style="font-size: 20px;">Email: </strong>
             <strong style="font-size: 20px;">{{user.email}}</strong>
             <ion-button style="margin: auto;" (click)='editUserEmail()' size="small">Edit email</ion-button>
-          </ion-rol>      
+          </ion-col>      
           <ion-col *ngIf="emailChange" style="margin: auto;">
-            <ion-rol class="verifcation">
-              <ion-rol>
+            <ion-col class="verifcation">
+              <ion-col>
                 <h3>Account Verfication</h3>
-              </ion-rol>
-              <ion-row>
+              </ion-col>
+              <ion-col>
                 <ion-input placeholder="Your Email: "     id="oldemail"></ion-input>
-              </ion-row>
-              <ion-row> 
+              </ion-col>
+              <ion-col> 
                 <ion-input placeholder="Your Password: "  id="password" [type] = "getType()"></ion-input>
                 <ion-icon slot = "end" [name] = "passwordToggleIcon" (click)="togglePassword()"></ion-icon>
-              </ion-row>
-            </ion-rol>
-            <ion-rol>
+              </ion-col>
+            </ion-col>
+            <ion-col>
               <h3>New email</h3>
-            </ion-rol>
-            <ion-row >
+            </ion-col>
+            <ion-col >
               <ion-input placeholder="New email: " id="changeemail"></ion-input>
-            </ion-row>
-            <ion-rol>
+            </ion-col>
+            <ion-col>
               <ion-button (click)='editUserEmail()' color="danger" size="small" >Cancel</ion-button>
               <ion-button (click)='editemail()' color="success" size="small" >Submit</ion-button>            
-            </ion-rol>
+            </ion-col>
 
           </ion-col>
-        </ion-row>
+        </ion-col>
 
         <!-- update height---- -->
-        <ion-rol style="margin: auto;">        
+        <ion-col style="margin: auto;">        
           <strong style="font-size: 20px;">Height: </strong>
           <strong style="font-size: 20px;">{{user.height}}</strong>
           <ion-button (click)='editUserHeight()' size="small">Edit Height</ion-button>
-          <ion-rol *ngIf="HeightChange">
+          <ion-col *ngIf="HeightChange">
             <ion-input placeholder="New Height: " id="changeHeight"></ion-input>
             <ion-button (click)='editUserHeight()' color="danger" size="small">Cancel</ion-button>
             <ion-button (click)='editHeight()' color="success" size="small">Submit</ion-button>
-          </ion-rol>
-        </ion-rol>
+          </ion-col>
+        </ion-col>
         <!-- update weight---- -->
-        <ion-rol style="margin: auto;">        
+        <ion-col style="margin: auto;">        
           <strong style="font-size: 20px;">Weight: </strong>
           <strong style="font-size: 20px;">{{user.weight}}</strong>
           <ion-button (click)='editUserWeight()' size="small">Edit Weight</ion-button>
           <br>
-          <ion-rol *ngIf="WeightChange">
+          <ion-col *ngIf="WeightChange">
             <ion-input placeholder="New Weight: " id="changeWeight"></ion-input>
             <ion-button (click)='editUserWeight()' color="danger" size="small">Cancel</ion-button>
             <ion-button (click)='editWeight()' color="success" size="small">Submit</ion-button>
-          </ion-rol>
-        </ion-rol>
+          </ion-col>
+        </ion-col>
 
 
     <!--done-->
@@ -129,4 +128,3 @@
   </ion-row>
 </ion-content>
 <ion-button (click)='logout()' expand='block'>logout</ion-button>
-
