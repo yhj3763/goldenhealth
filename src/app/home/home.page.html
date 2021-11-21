@@ -9,9 +9,6 @@
   </ion-toolbar>
 </ion-header>
 <!-- Testing update on GitLab (9/25/21) -->
-<!-- Next test -->
-
-<!-- (test dummy -->
 <ion-content>
   <ion-row class="ion-text-center">
     <ion-col size="12" size-md="10" size-lg="7" >
@@ -37,6 +34,8 @@
       <ion-item id="recommdation"></ion-item>
 
       <ion-col>
+        <!-- (11/21/21) Note to self: have toggle btn when user clicks 'submit'
+        to collapse list below -->
       <ion-button (click)='editpersonalinfo()' size="small">Edit Personal Info</ion-button>
       <ion-row *ngIf="updatePersonalInfo">
         <!-- update name---- -->
@@ -111,20 +110,9 @@
 
 
     <!--done-->
-      </ion-row>
+       </ion-row>
       </ion-col>
-
-      <!-- Any '*' below will do the same on this page!---- -->
-
-
-      <!-- <anytype>{{users.(field)}}</anytype> -->
     </ion-col>
-  <!-- <div>
-    <ul *ngFor="let user of users| async">
-      <li>{{user.name}}</li>
-    </ul>
-  </div> -->
-
   </ion-row>
 </ion-content>
 <ion-button (click)='logout()' expand='block'>logout</ion-button>

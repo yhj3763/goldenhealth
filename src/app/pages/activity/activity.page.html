@@ -67,9 +67,9 @@
         <ion-col>
           <ion-button (click)='editactivityinfo()' color="success" size="small">Edit</ion-button>
           <ion-row *ngIf="updateActivityInfo">
+
             <!-- update workout name---- -->
             <ion-row style="margin: auto;">        
-              <strong style="font-size: 20px;">Workout Name: </strong>
               <strong style="font-size: 20px;">{{user.Workout[0]}}</strong>
               <ion-button (click)='editWorkoutName()' size="small">Edit Workout</ion-button>
               <br>
@@ -81,57 +81,53 @@
             </ion-row>
 
             <!-- update sets -->
-            <!-- <ion-row style="margin: auto;">        
-              <strong style="font-size: 20px;">Email: </strong>
-              <strong style="font-size: 20px;">{{user.email}}</strong>
-              <ion-button (click)='editEmail()' size="small">Edit email</ion-button>
+            <ion-row style="margin: auto;">        
+              <strong style="font-size: 20px;">{{user.Workout[1]}}</strong>
+              <ion-button (click)='editSetNum()' size="small">Edit Sets</ion-button>
               <br>
-              <ion-row *ngIf="emailChange">
-                <ion-input placeholder="New email: " id="changeemail"></ion-input>
-                <ion-button (click)='editEmail()' color="danger" size="small">Cancel</ion-button>
-                <ion-button (click)='editemail()' color="success" size="small">Submit</ion-button>
+              <ion-row *ngIf="setChange">
+                <ion-input placeholder="New Set Num: " id="setnum"></ion-input>
+                <ion-button (click)='editSets()' color="danger" size="small">Cancel</ion-button>
+                <ion-button (click)='editset()' color="success" size="small">Submit</ion-button>
               </ion-row>
-            </ion-row> -->
+            </ion-row>
 
             <!-- update reps---- -->
-            <!-- <ion-row style="margin: auto;">        
-              <strong style="font-size: 20px;">Height: </strong>
-              <strong style="font-size: 20px;">{{user.height}}</strong>
-              <ion-button (click)='editUserHeight()' size="small">Edit Height</ion-button>
+            <ion-row style="margin: auto;">        
+              <strong style="font-size: 20px;">{{user.Workout[2]}}</strong>
+              <ion-button (click)='editRepNum()' size="small">Edit Reps</ion-button>
               <br>
-              <ion-row *ngIf="HeightChange">
-                <ion-input placeholder="New Height: " id="changeHeight"></ion-input>
-                <ion-button (click)='editUserHeight()' color="danger" size="small">Cancel</ion-button>
-                <ion-button (click)='editHeight()' color="success" size="small">Submit</ion-button>
+              <ion-row *ngIf="repChange">
+                <ion-input placeholder="New Rep Num: " id="repnum"></ion-input>
+                <ion-button (click)='editReps()' color="danger" size="small">Cancel</ion-button>
+                <ion-button (click)='editrep()' color="success" size="small">Submit</ion-button>
               </ion-row>
-            </ion-row> -->
+            </ion-row>
 
             <!-- update time---- -->
-            <!-- <ion-row style="margin: auto;">        
-              <strong style="font-size: 20px;">Weight: </strong>
-              <strong style="font-size: 20px;">{{user.weight}}</strong>
-              <ion-button (click)='editUserWeight()' size="small">Edit Weight</ion-button>
+            <ion-row style="margin: auto;">        
+              <strong style="font-size: 20px;">{{user.Workout[3]}}</strong>
+              <ion-button (click)='editTimeNum()' size="small">Edit Time</ion-button>
               <br>
-              <ion-row *ngIf="WeightChange">
-                <ion-input placeholder="New Weight: " id="changeWeight"></ion-input>
-                <ion-button (click)='editUserWeight()' color="danger" size="small">Cancel</ion-button>
-                <ion-button (click)='editWeight()' color="success" size="small">Submit</ion-button>
+              <ion-row *ngIf="timeChange">
+                <ion-input placeholder="New Time: " id="timenum"></ion-input>
+                <ion-button (click)='editTime()' color="danger" size="small">Cancel</ion-button>
+                <ion-button (click)='edittime()' color="success" size="small">Submit</ion-button>
               </ion-row>
-            </ion-row> -->
+            </ion-row>
 
             <!-- update notes---- -->
-            <!-- <ion-row style="margin: auto;">        
-              <strong style="font-size: 20px;">Weight: </strong>
-              <strong style="font-size: 20px;">{{user.weight}}</strong>
-              <ion-button (click)='editUserWeight()' size="small">Edit Weight</ion-button>
+            <ion-row style="margin: auto;">        
+              <strong style="font-size: 20px;">{{user.Workout[4]}}</strong>
+              <ion-button (click)='editNotes()' size="small">Edit Notes</ion-button>
               <br>
-              <ion-row *ngIf="WeightChange">
-                <ion-input placeholder="New Weight: " id="changeWeight"></ion-input>
-                <ion-button (click)='editUserWeight()' color="danger" size="small">Cancel</ion-button>
-                <ion-button (click)='editWeight()' color="success" size="small">Submit</ion-button>
+              <ion-row *ngIf="noteChange">
+                <ion-input placeholder="New Notes: " id="note"></ion-input>
+                <!-- editNote on click is different from editNotes above!! -->
+                <ion-button (click)='editNote()' color="danger" size="small">Cancel</ion-button>
+                <ion-button (click)='editnote()' color="success" size="small">Submit</ion-button>
               </ion-row>
-            </ion-row> -->
-
+            </ion-row>
           <!--done-->
           </ion-row>
         </ion-col>

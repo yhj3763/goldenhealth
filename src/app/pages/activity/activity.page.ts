@@ -6,14 +6,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from "@angular/fire/compat/firestore"; //import the firestore database
 
-interface Workout {
-  date: number,
-  workout: string,
-  sets: string,
-  reps: number,
-  time: number,
-  notes: string
-}
+// interface Workout {
+//   date: number,
+//   workout: string,
+//   sets: string,
+//   reps: number,
+//   time: number,
+//   notes: string
+// }
 // { date: '11/9/69', workout: 'push-ups', sets: '6', reps
 // : 9, notes: N/A}, 
 @Component({
@@ -30,6 +30,11 @@ export class ActivityPage implements OnInit {
   public Time: number;
   public Notes: any;
   form: FormGroup;
+
+  public updateActivityInfo:boolean;
+
+  public workoutChange: boolean;
+
   // ngonit function to be assigned
   public userid: number;
   users: Observable<any>;
@@ -95,23 +100,23 @@ export class ActivityPage implements OnInit {
   // edit functions below
   // (11/20/21) Will have functions implemented soon 
 
-  // editactivityinfo() {
-  //   this.updateActivityInfo = !this.updateActivityInfo;
-  //   // this.hideName = !this.hideName;
-  // }
+  editactivityinfo() {
+    this.updateActivityInfo = !this.updateActivityInfo;
+    // this.hideName = !this.hideName;
+  }
 
-  //   editWorkoutName(){
-  //     this.workoutChange = !this.workoutChange;
-  //   }
-  //   editname(){
-  //     let workoutNameChanges = (document.getElementById("workoutname") as HTMLInputElement).value;
-  //     this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").doc(this.uid).update({
-  //       name: workoutNameChanges
-  //       }); 
-  //     console.log("Your Name Had been changed to: "+ workoutNameChanges)
-  //     this.editWorkoutName()
+    editWorkoutName(){
+      this.workoutChange = !this.workoutChange;
+    }
+    editworkout(){
+      let workoutNameChanges = (document.getElementById("workoutname") as HTMLInputElement).value;
+      this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid).update({
+        Workout: workoutNameChanges
+        }); 
+      console.log("Your Name Had been changed to: "+ workoutNameChanges);
+      this.editWorkoutName();
 
-  //   }
+    }
 
   //   editEmail(){
   //     this.emailChange = !this.emailChange;
