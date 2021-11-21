@@ -175,7 +175,7 @@
     <p *ngFor="let user of users | async"> {{user.meal[4]}} </p>
     <p *ngFor="let user of users | async"> {{user.meal[5]}} </p>-->
 
-      <ul *ngFor="let user of users| async">
+      <ul *ngFor="let user of users| async"  id="List">
         <li>{{user.Date}}</li>
         <li>{{user.meal[0]}}</li>
         <li>{{user.meal[1]}}</li>
@@ -192,7 +192,7 @@
         <li>{{user.meal[12]}}</li>
         <li>{{user.meal[13]}}</li>
         <ion-button (click)='edit()' color="success" size="small">Edit</ion-button>
-        <ion-button (click)='delete()' color="danger" size="small">Delete</ion-button>
+        <ion-button (click)='deletedata()' color="danger" size="small">Delete</ion-button>
       </ul>
     </div>
   <!-- Graph will displace directly bellow following code, preferably a Bar Graph -->
