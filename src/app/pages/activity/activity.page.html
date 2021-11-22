@@ -56,7 +56,7 @@
     <p *ngFor="let user of users | async"> {{user.meal[4]}} </p>
     <p *ngFor="let user of users | async"> {{user.meal[5]}} </p>-->
 
-      <ul *ngFor="let user of users| async">
+      <ul *ngFor="let user of users| async" id="List">
         <li>{{user.Date}}</li>
         <li>{{user.Workout[0]}}</li>
         <li>{{user.Workout[1]}}</li>
@@ -66,6 +66,9 @@
         <!-- <ion-button (click)='edit()' color="success" size="small">Edit</ion-button> -->
         <ion-col>
           <ion-button (click)='editactivityinfo()' color="success" size="small">Edit</ion-button>
+          <ion-button (click)='deletedata()' color="danger" size="small">Delete</ion-button>
+        </ion-col>
+        <ion-col>
           <ion-row *ngIf="updateActivityInfo">
 
             <!-- update workout name---- -->
@@ -83,36 +86,36 @@
             <!-- update sets -->
             <ion-row style="margin: auto;">        
               <strong style="font-size: 20px;">{{user.Workout[1]}}</strong>
-              <ion-button (click)='editSetNum()' size="small">Edit Sets</ion-button>
+              <ion-button (click)='editSets()' size="small">Edit Sets</ion-button>
               <br>
-              <ion-row *ngIf="setChange">
+              <ion-row *ngIf="setsChange">
                 <ion-input placeholder="New Set Num: " id="setnum"></ion-input>
                 <ion-button (click)='editSets()' color="danger" size="small">Cancel</ion-button>
-                <ion-button (click)='editset()' color="success" size="small">Submit</ion-button>
+                <ion-button (click)='editworkoutSets()' color="success" size="small">Submit</ion-button>
               </ion-row>
             </ion-row>
 
             <!-- update reps---- -->
             <ion-row style="margin: auto;">        
               <strong style="font-size: 20px;">{{user.Workout[2]}}</strong>
-              <ion-button (click)='editRepNum()' size="small">Edit Reps</ion-button>
+              <ion-button (click)='editReps()' size="small">Edit Reps</ion-button>
               <br>
-              <ion-row *ngIf="repChange">
+              <ion-row *ngIf="repsChange">
                 <ion-input placeholder="New Rep Num: " id="repnum"></ion-input>
                 <ion-button (click)='editReps()' color="danger" size="small">Cancel</ion-button>
-                <ion-button (click)='editrep()' color="success" size="small">Submit</ion-button>
+                <ion-button (click)='editworkoutReps()' color="success" size="small">Submit</ion-button>
               </ion-row>
             </ion-row>
 
             <!-- update time---- -->
             <ion-row style="margin: auto;">        
               <strong style="font-size: 20px;">{{user.Workout[3]}}</strong>
-              <ion-button (click)='editTimeNum()' size="small">Edit Time</ion-button>
+              <ion-button (click)='editTime()' size="small">Edit Time</ion-button>
               <br>
               <ion-row *ngIf="timeChange">
                 <ion-input placeholder="New Time: " id="timenum"></ion-input>
                 <ion-button (click)='editTime()' color="danger" size="small">Cancel</ion-button>
-                <ion-button (click)='edittime()' color="success" size="small">Submit</ion-button>
+                <ion-button (click)='editworkoutTime()' color="success" size="small">Submit</ion-button>
               </ion-row>
             </ion-row>
 
@@ -121,11 +124,11 @@
               <strong style="font-size: 20px;">{{user.Workout[4]}}</strong>
               <ion-button (click)='editNotes()' size="small">Edit Notes</ion-button>
               <br>
-              <ion-row *ngIf="noteChange">
+              <ion-row *ngIf="notesChange">
                 <ion-input placeholder="New Notes: " id="note"></ion-input>
                 <!-- editNote on click is different from editNotes above!! -->
-                <ion-button (click)='editNote()' color="danger" size="small">Cancel</ion-button>
-                <ion-button (click)='editnote()' color="success" size="small">Submit</ion-button>
+                <ion-button (click)='editNotes()' color="danger" size="small">Cancel</ion-button>
+                <ion-button (click)='editworkoutNote()' color="success" size="small">Submit</ion-button>
               </ion-row>
             </ion-row>
           <!--done-->
@@ -144,7 +147,6 @@
             <ion-button (click)='editHeight()' color="success" size="small">Submit</ion-button>
           </ion-row> -->
         <!-- </ion-row> -->
-        <ion-button (click)='delete()' color="danger" size="small">Delete</ion-button>
       </ul>
     </div>
   <!-- <ion-list lines="full" class="ion-no-margin">
