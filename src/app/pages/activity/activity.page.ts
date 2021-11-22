@@ -34,6 +34,10 @@ export class ActivityPage implements OnInit {
   public updateActivityInfo:boolean;
 
   public workoutChange: boolean;
+  public setsChange: boolean;
+  public repsChange: boolean;
+  public timeChange: boolean;
+  public notesChange: boolean;
 
   // ngonit function to be assigned
   public userid: number;
@@ -105,19 +109,159 @@ export class ActivityPage implements OnInit {
     // this.hideName = !this.hideName;
   }
 
+  //change workout name 
     editWorkoutName(){
       this.workoutChange = !this.workoutChange;
     }
     editworkout(){
       let workoutNameChanges = (document.getElementById("workoutname") as HTMLInputElement).value;
-      this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid).update({
-        Workout: workoutNameChanges
-        }); 
-      console.log("Your Name Had been changed to: "+ workoutNameChanges);
+      let navbar = document.getElementById("List").querySelectorAll('li');
+      let workoutname = navbar[1].innerHTML.split(': ')[1]
+      let updatedlist: Array<any> = []
+      let newdatetype = this.inputdate+":"+workoutNameChanges
+      for(var i = 1;i<navbar.length;i++){
+        if(i == 1){
+          updatedlist.push("Workout Name: "+workoutNameChanges)
+        }else{
+          updatedlist.push(navbar[i].innerHTML)
+        }
+      }
+      console.log(workoutname)
+      console.log(newdatetype)
+      let data = {
+        Date:     this.inputdate,
+        Workout:  updatedlist,
+        uid:      this.uid,
+        DateType: newdatetype
+      }
+      this.fireService.saveActivity(data).then(res=>{
+        console.log("Activity saved")
+        },err=>{
+          console.log(this.Date)
+          console.log(err);
+        });
+
+      this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid)
+        .collection(this.inputdate).doc(this.inputdate+":"+workoutname).delete();
+      
+        /*this.fireService.saveActivity(temp).then(res=>{
+          console.log("Activity saved")
+          },err=>{
+            console.log(this.Date)
+            console.log(err);
+          });*/
+      
+        //console.log(temp)
+      console.log("Your Work out Name Had been changed to: "+ workoutNameChanges);
       this.editWorkoutName();
 
     }
+      //change workout sets
+    editSets(){
+      this.setsChange = !this.setsChange;
+    }
+    editworkoutSets(){
+      let workoutSetChanges = (document.getElementById("setnum") as HTMLInputElement).value;
+      let navbar = document.getElementById("List").querySelectorAll('li');
+      let workoutname = navbar[1].innerHTML.split(': ')[1]
+      let updatedlist: Array<any> = []
+      for(var i = 1;i<navbar.length;i++){
+        if(i == 2){
+          updatedlist.push("Sets: "+workoutSetChanges)
+        }else{
+          updatedlist.push(navbar[i].innerHTML)
+        }
+      }
+      console.log(workoutname)
+      this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid)
+        .collection(this.inputdate).doc(this.inputdate+":"+workoutname).update({
+       Workout: updatedlist
+      }); 
+      console.log("Your Number of Set Had been changed to: "+ workoutSetChanges);
+      this.editSets();
 
+    }
+      //change workout reps
+    editReps(){
+      this.repsChange = !this.repsChange;
+    }
+    editworkoutReps(){
+      let workoutRepChanges = (document.getElementById("repnum") as HTMLInputElement).value;
+      let navbar = document.getElementById("List").querySelectorAll('li');
+      let workoutname = navbar[1].innerHTML.split(': ')[1]
+      let updatedlist: Array<any> = []
+      for(var i = 1;i<navbar.length;i++){
+        if(i == 3){
+          updatedlist.push("Reps: "+workoutRepChanges)
+        }else{
+          updatedlist.push(navbar[i].innerHTML)
+        }
+      }
+      console.log(workoutname)
+      this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid)
+        .collection(this.inputdate).doc(this.inputdate+":"+workoutname).update({
+       Workout: updatedlist
+      }); 
+      console.log("Your Number of Rep Had been changed to: "+ workoutRepChanges);
+      this.editReps();
+    }
+      //change workout  time
+    editTime(){
+      this.timeChange = !this.timeChange;
+    }
+    editworkoutTime(){
+      let workoutTimeChanges = (document.getElementById("timenum") as HTMLInputElement).value;
+      let navbar = document.getElementById("List").querySelectorAll('li');
+      let workoutname = navbar[1].innerHTML.split(': ')[1]
+      let updatedlist: Array<any> = []
+      for(var i = 1;i<navbar.length;i++){
+        if(i == 4){
+          updatedlist.push("Time: "+workoutTimeChanges)
+        }else{
+          updatedlist.push(navbar[i].innerHTML)
+        }
+      }
+      console.log(workoutname)
+      this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid)
+        .collection(this.inputdate).doc(this.inputdate+":"+workoutname).update({
+       Workout: updatedlist
+      }); 
+      console.log("Your Time Had been changed to: "+ workoutTimeChanges);
+      this.editTime();
+
+    }
+      //change workout Notes
+    editNotes(){
+      this.notesChange = !this.notesChange;
+    }
+    editworkoutNote(){
+      let workoutNoteChanges = (document.getElementById("note") as HTMLInputElement).value;
+      let navbar = document.getElementById("List").querySelectorAll('li');
+      let workoutname = navbar[1].innerHTML.split(': ')[1]
+      let updatedlist: Array<any> = []
+      for(var i = 1;i<navbar.length;i++){
+        if(i == 5){
+          updatedlist.push("Notes: "+workoutNoteChanges)
+        }else{
+          updatedlist.push(navbar[i].innerHTML)
+        }
+      }
+      console.log(workoutname)
+      this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid)
+        .collection(this.inputdate).doc(this.inputdate+":"+workoutname).update({
+       Workout: updatedlist
+      }); 
+      console.log("Your Note Had been changed to: "+ workoutNoteChanges);
+      this.editNotes();
+
+    }
+
+
+    deletedata(){
+      let navbar = document.getElementById("List").querySelectorAll('li');
+      var workoutName= navbar[1].innerHTML.split(': ')[1];
+      this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid).collection(this.inputdate).doc(this.inputdate+":"+workoutName).delete();
+    }
   //   editEmail(){
   //     this.emailChange = !this.emailChange;
   //   }
