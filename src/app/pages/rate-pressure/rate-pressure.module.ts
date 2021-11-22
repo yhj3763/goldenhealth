@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { RatePressurePageRoutingModule } from './rate-pressure-routing.module';
 
 import { RatePressurePage } from './rate-pressure.page';
+import { LoginPage } from '../../login/login.page';
 
 
 
@@ -18,6 +19,7 @@ import { RatePressurePage } from './rate-pressure.page';
     IonicModule,
     RatePressurePageRoutingModule
   ],
-  declarations: [RatePressurePage]
+  declarations: [RatePressurePage],
+  providers: [LoginPage]
 })
 export class RatePressurePageModule {}
