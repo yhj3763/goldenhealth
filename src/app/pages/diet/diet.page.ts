@@ -509,12 +509,12 @@ Datasuggestions()
 
   let myContainer = document.getElementById('reccomendation') as HTMLInputElement;
   //if statements
-  if(caloriedata <= foodcaloriebuffersuggestion){
+  if(caloriedata < foodcaloriebuffersuggestion){
     return myContainer.innerHTML = "You have exceded your target calories for the day.";
-  }else if(caloriedata >= foodcaloriebuffersuggestion){
+  }else if(caloriedata > foodcaloriebuffersuggestion){
     return myContainer.innerHTML = "You have not yet met your target calories";
-  }else{
-    // (11/19/21) code below doesn't work after testing 
+  }else if (caloriedata = foodcaloriebuffersuggestion){
+    // (11/22/2021) fixed below -James
     return myContainer.innerHTML = "You have met your target calories! Good job! :D !!";
   }
   });
