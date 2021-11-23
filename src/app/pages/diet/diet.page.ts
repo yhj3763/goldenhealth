@@ -54,6 +54,8 @@ export class DietPage implements OnInit {
   showMacros: boolean = false;
   showInput: boolean = false;
 
+  public updateDietInfo:boolean;
+
   form: FormGroup;
   // ngonit function to be assigned
   //private userid: number;
@@ -214,6 +216,12 @@ export class DietPage implements OnInit {
     //get targetcalories
 
     //save targetcalories
+
+    editdietinfo() {
+      this.updateDietInfo = !this.updateDietInfo;
+      // this.hideName = !this.hideName;
+    }
+
     saveTargetCalories(){
       let data = {
         Date:this.inputdate,

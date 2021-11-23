@@ -152,7 +152,7 @@ export class ActivityPage implements OnInit {
           });*/
       
         //console.log(temp)
-      console.log("Your Work out Name Had been changed to: "+ workoutNameChanges);
+      console.log("Your workout name has been changed to: "+ workoutNameChanges);
       this.editWorkoutName();
 
     }
@@ -177,7 +177,7 @@ export class ActivityPage implements OnInit {
         .collection(this.inputdate).doc(this.inputdate+":"+workoutname).update({
        Workout: updatedlist
       }); 
-      console.log("Your Number of Set Had been changed to: "+ workoutSetChanges);
+      console.log("Your number of set(s) Had been changed to: "+ workoutSetChanges);
       this.editSets();
 
     }
@@ -202,7 +202,7 @@ export class ActivityPage implements OnInit {
         .collection(this.inputdate).doc(this.inputdate+":"+workoutname).update({
        Workout: updatedlist
       }); 
-      console.log("Your Number of Rep Had been changed to: "+ workoutRepChanges);
+      console.log("Your number of rep(s) Had been changed to: "+ workoutRepChanges);
       this.editReps();
     }
       //change workout  time
@@ -226,7 +226,7 @@ export class ActivityPage implements OnInit {
         .collection(this.inputdate).doc(this.inputdate+":"+workoutname).update({
        Workout: updatedlist
       }); 
-      console.log("Your Time Had been changed to: "+ workoutTimeChanges);
+      console.log("Your time Had been changed to: "+ workoutTimeChanges);
       this.editTime();
 
     }
@@ -251,7 +251,7 @@ export class ActivityPage implements OnInit {
         .collection(this.inputdate).doc(this.inputdate+":"+workoutname).update({
        Workout: updatedlist
       }); 
-      console.log("Your Note Had been changed to: "+ workoutNoteChanges);
+      console.log("Your note(s) Had been changed to: "+ workoutNoteChanges);
       this.editNotes();
 
     }
@@ -262,41 +262,4 @@ export class ActivityPage implements OnInit {
       var workoutName= navbar[1].innerHTML.split(': ')[1];
       this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid).collection(this.inputdate).doc(this.inputdate+":"+workoutName).delete();
     }
-  //   editEmail(){
-  //     this.emailChange = !this.emailChange;
-  //   }
-  //   editemail(){
-  //     let emailChanges = (document.getElementById("changeemail") as HTMLInputElement).value;
-  //     this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").doc(this.uid).update({
-  //       email: emailChanges
-  //       }); 
-  //     console.log("Your Email Had been changed to: "+ emailChanges)
-  //     this.editEmail()
-
-  //   }
-
-  //   editUserHeight(){
-  //     this.HeightChange = !this.HeightChange;
-  //   }
-  //   editHeight(){
-  //     let HeightChanges = (document.getElementById("changeHeight") as HTMLInputElement).value;
-  //     this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").doc(this.uid).update({
-  //       height: HeightChanges
-  //       }); 
-  //     console.log("Your Height Had been changed"+ HeightChanges)
-  //     this.editUserHeight()
-  //     }
-
-  //     editUserWeight(){
-  //       this.WeightChange = !this.WeightChange;
-  //     }
-  //     editWeight(){
-  //       let WeightChanges = (document.getElementById("changeWeight") as HTMLInputElement).value;
-  //       this.firestore.collection("users").doc(this.uid).collection("PersonalInfo").doc(this.uid).update({
-  //         weight: WeightChanges
-  //         }); 
-  //         console.log("Your Weight Had been changed"+ WeightChanges)
-  //         this.editUserWeight()
-          
-  //       }
 }
