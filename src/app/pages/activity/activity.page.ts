@@ -258,4 +258,21 @@ export class ActivityPage implements OnInit {
       this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid)
       .collection(this.inputdate).doc(this.inputdate+":"+workoutName).delete();
     }
+    //11-24-2021 added by james
+    activity_reccomendation(){
+      let myContainer = document.getElementById('reccomendation') as HTMLInputElement;
+      this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid).collection(this.inputdate).snapshotChanges().subscribe(res => {
+        if (res.length > 0)
+        {
+        console.log("Match found.");
+        return myContainer.innerHTML = "Good job you were active today";
+        }
+        else
+        {
+        console.log("Does not exist.");
+        return myContainer.innerHTML = "You haven't done anything today yet. It's never to late to start.";
+        }
+    });
+    
+    }
 }
