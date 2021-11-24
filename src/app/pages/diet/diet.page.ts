@@ -55,7 +55,12 @@ export class DietPage implements OnInit {
   showInput: boolean = false;
 
   public updateDietInfo:boolean;
-
+  public updateMealName:boolean;
+  public updateFood:boolean;
+  public updateCalories:boolean;
+  public updateProtein:boolean;
+  public updateCarbs:boolean;
+  public updateFat:boolean;
   form: FormGroup;
   // ngonit function to be assigned
   //private userid: number;
@@ -236,18 +241,239 @@ export class DietPage implements OnInit {
           console.log(err);
         });  
     }
+//Update Area______________________________________//Update Area______________________________________//Update Area______________________________________
+//Update Area______________________________________//Update Area______________________________________//Update Area______________________________________
+//Update Area______________________________________//Update Area______________________________________//Update Area______________________________________
+//________________Update Food___________________
+    editFood(){
+      this.updateFood = !this.updateFood;
+      }
+    editdietFood(){
+      let FoodnameChange = (document.getElementById("food") as HTMLInputElement).value;
+      let navbar = document.getElementById("List").querySelectorAll('li');
+      let MealType = navbar[0].innerHTML.split(' : ')[1]
+      let Foodname = navbar[1].innerHTML.split(' : ')[1]
+      let updatedlist: Array<any> = []
+      let newdatetype = this.inputdate+":"+MealType+":"+FoodnameChange
+      for(var i = 0;i<navbar.length;i++){
+        if(i == 1){
+          updatedlist.push("Food : "+FoodnameChange)
+          console.log(FoodnameChange)
+        }else{
+          updatedlist.push(navbar[i].innerHTML)
+          console.log(navbar[i].innerHTML)
+        }
+      }
+      console.log(FoodnameChange)
+      console.log(newdatetype)
+      let data = {
+        Date:this.inputdate,
+        meal:updatedlist,
+        Type:MealType,
+        uid:this.uid,
+        DateType:newdatetype
+        }
+      this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid)
+      .collection(this.inputdate).doc(newdatetype).set(data).then(res=>{
+        console.log("Diet saved")
+        },err=>{
+          console.log(this.Date)
+          console.log(err);
+        });
+      this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid)
+        .collection(this.inputdate).doc(this.inputdate+":"+MealType+":"+Foodname).delete();
+
+      console.log("Your Food name has been changed to: "+ FoodnameChange);
+      this.editFood();
+      }
+//________________Update Food___________________
+//________________Update meal type___________________
+editMeal(){
+  this.updateMealName = !this.updateMealName;
+
+}
+editdietMeal(){
+  let MealChange = (document.getElementById("meal") as HTMLSelectElement).value;
+  console.log("Newmae"+MealChange)
+  let navbar = document.getElementById("List").querySelectorAll('li');
+  let MealType = navbar[0].innerHTML.split(' : ')[1]
+  let Foodname = navbar[1].innerHTML.split(' : ')[1]
+  let updatedlist: Array<any> = []
+  let newdatetype = this.inputdate+":"+MealChange+":"+Foodname
+  for(var i = 0;i<navbar.length;i++){
+    if(i == 0){
+      updatedlist.push("Meal : "+MealChange)
+      console.log(MealChange)
+    }else{
+      updatedlist.push(navbar[i].innerHTML)
+      console.log(navbar[i].innerHTML)
+    }
+  }
+  console.log(MealChange)
+  console.log(newdatetype)
+  let data = {
+    Date:this.inputdate,
+    meal:updatedlist,
+    Type:MealType,
+    uid:this.uid,
+    DateType:newdatetype
+    }
+  this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid)
+  .collection(this.inputdate).doc(newdatetype).set(data).then(res=>{
+    console.log("Diet saved")
+    },err=>{
+      console.log(this.Date)
+      console.log(err);
+    });
+  this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid)
+    .collection(this.inputdate).doc(this.inputdate+":"+MealType+":"+Foodname).delete();
+
+  console.log("Your Meal Type has been changed to: "+ MealChange);
+  this.editMeal();
+}
+
+//________________Update meal type___________________
+
+//________________update Calories___________________-
+editCalories(){
+  this.updateCalories = !this.updateCalories;
+
+}
+editdietCalories(){
+  let CaloriesChange = (document.getElementById("calories") as HTMLInputElement).value;
+  let navbar = document.getElementById("List").querySelectorAll('li');
+  let MealType = navbar[0].innerHTML.split(' : ')[1]
+  let Foodname = navbar[1].innerHTML.split(' : ')[1]
+  let updatedlist: Array<any> = []
+  for(var i = 0;i<navbar.length;i++){
+    if(i == 2){
+      updatedlist.push("Calories : "+CaloriesChange)
+      console.log(CaloriesChange)
+    }else{
+      updatedlist.push(navbar[i].innerHTML)
+      console.log(navbar[i].innerHTML)
+    }
+  }
+  console.log(CaloriesChange)
+  console.log(this.inputdate+":"+MealType+":"+Foodname)
+  this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid)
+    .collection(this.inputdate).doc(this.inputdate+":"+MealType+":"+Foodname).update({
+      meal:updatedlist,
+    }); 
+
+  console.log("Your Calories has been changed to: "+ CaloriesChange);
+  this.editCalories();
+}
+
+//________________update Calories___________________-
+
+//________________update Protein___________________-
+editProtein(){
+  this.updateProtein = !this.updateProtein;
+
+}
+editdietProtein(){
+  let proteinChange = (document.getElementById("protein") as HTMLInputElement).value;
+  let navbar = document.getElementById("List").querySelectorAll('li');
+  let MealType = navbar[0].innerHTML.split(' : ')[1]
+  let Foodname = navbar[1].innerHTML.split(' : ')[1]
+  let updatedlist: Array<any> = []
+  for(var i = 0;i<navbar.length;i++){
+    if(i == 3){
+      updatedlist.push("Protein : "+proteinChange)
+      console.log(proteinChange)
+    }else{
+      updatedlist.push(navbar[i].innerHTML)
+      console.log(navbar[i].innerHTML)
+    }
+  }
+  console.log(proteinChange)
+  console.log(this.inputdate+":"+MealType+":"+Foodname)
+  this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid)
+    .collection(this.inputdate).doc(this.inputdate+":"+MealType+":"+Foodname).update({
+      meal:updatedlist,
+    }); 
+
+  console.log("Your Protein has been changed to: "+ proteinChange);
+  this.editProtein();
+}
+//________________update Protein___________________-
+
+
+//________________update Carb___________________-
+editCarbs(){
+  this.updateCarbs = !this.updateCarbs;
+
+}
+editdietCarbs(){
+  let CarbChange = (document.getElementById("carbs") as HTMLInputElement).value;
+  let navbar = document.getElementById("List").querySelectorAll('li');
+  let MealType = navbar[0].innerHTML.split(' : ')[1]
+  let Foodname = navbar[1].innerHTML.split(' : ')[1]
+  let updatedlist: Array<any> = []
+  for(var i = 0;i<navbar.length;i++){
+    if(i == 4){
+      updatedlist.push("Carb : "+CarbChange)
+      console.log(CarbChange)
+    }else{
+      updatedlist.push(navbar[i].innerHTML)
+      console.log(navbar[i].innerHTML)
+    }
+  }
+  console.log(CarbChange)
+  console.log(this.inputdate+":"+MealType+":"+Foodname)
+  this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid)
+    .collection(this.inputdate).doc(this.inputdate+":"+MealType+":"+Foodname).update({
+      meal:updatedlist,
+    }); 
+
+  console.log("Your Carb has been changed to: "+ CarbChange);
+  this.editCarbs();
+}
+//________________update Carb___________________-
+//________________update fat___________________-
+editFat(){
+  this.updateFat = !this.updateFat;
+
+}
+editdietFat(){
+  let FatChange = (document.getElementById("fat") as HTMLInputElement).value;
+  let navbar = document.getElementById("List").querySelectorAll('li');
+  let MealType = navbar[0].innerHTML.split(' : ')[1]
+  let Foodname = navbar[1].innerHTML.split(' : ')[1]
+  let updatedlist: Array<any> = []
+  for(var i = 0;i<navbar.length;i++){
+    if(i == 5){
+      updatedlist.push("Fat : "+FatChange)
+      console.log(FatChange)
+    }else{
+      updatedlist.push(navbar[i].innerHTML)
+      console.log(navbar[i].innerHTML)
+    }
+  }
+  console.log(FatChange)
+  console.log(this.inputdate+":"+MealType+":"+Foodname)
+  this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid)
+    .collection(this.inputdate).doc(this.inputdate+":"+MealType+":"+Foodname).update({
+      meal:updatedlist,
+    }); 
+
+  console.log("Your Fat has been changed to: "+ FatChange);
+  this.editFat();
+}
+//________________update fat___________________-
+
+
+//Update Area______________________________________//Update Area______________________________________//Update Area______________________________________
+//Update Area______________________________________//Update Area______________________________________//Update Area______________________________________
+//Update Area______________________________________//Update Area______________________________________//Update Area______________________________________
+
 
 
   deletedata(){
     let navbar = document.getElementById("List").querySelectorAll('li');
-    console.log("something")
     var mealtype= navbar[0].innerHTML.split(' : ')[1]
-    console.log(mealtype)
     var food= navbar[1].innerHTML.split(' : ')[1]
-    console.log(food)
-    console.log(this.uid)
-    console.log(this.inputdate)
-    console.log(this.inputdate+":"+mealtype+":"+food)
     this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid)
     .collection(this.inputdate).doc(this.inputdate+":"+mealtype+":"+food).delete();
   }
