@@ -240,11 +240,16 @@ export class DietPage implements OnInit {
 
   deletedata(){
     let navbar = document.getElementById("List").querySelectorAll('li');
-
-    var mealtype= navbar[1].innerHTML.split(' : ')[1]
-    var food= navbar[2].innerHTML.split(' : ')[1]
-
-    this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid).collection(this.inputdate).doc(this.inputdate+":"+mealtype+":"+food).delete();
+    console.log("something")
+    var mealtype= navbar[0].innerHTML.split(' : ')[1]
+    console.log(mealtype)
+    var food= navbar[1].innerHTML.split(' : ')[1]
+    console.log(food)
+    console.log(this.uid)
+    console.log(this.inputdate)
+    console.log(this.inputdate+":"+mealtype+":"+food)
+    this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid)
+    .collection(this.inputdate).doc(this.inputdate+":"+mealtype+":"+food).delete();
   }
 
 
