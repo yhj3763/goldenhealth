@@ -95,6 +95,7 @@ export class ActivityPage implements OnInit {
     }
     this.fireService.saveActivity(data).then(res=>{
       console.log("Activity saved")
+      location.reload();
       },err=>{
         console.log(this.Date)
         console.log(err);
@@ -116,14 +117,16 @@ export class ActivityPage implements OnInit {
     editworkout(){
       let workoutNameChanges = (document.getElementById("workoutname") as HTMLInputElement).value;
       let navbar = document.getElementById("List").querySelectorAll('li');
-      let workoutname = navbar[1].innerHTML.split(': ')[1]
+      let workoutname = navbar[0].innerHTML.split(': ')[1]
       let updatedlist: Array<any> = []
       let newdatetype = this.inputdate+":"+workoutNameChanges
-      for(var i = 1;i<navbar.length;i++){
-        if(i == 1){
+      for(var i = 0;i<navbar.length;i++){
+        if(i == 0){
           updatedlist.push("Workout Name: "+workoutNameChanges)
+          console.log(workoutNameChanges)
         }else{
           updatedlist.push(navbar[i].innerHTML)
+          console.log(navbar[i].innerHTML)
         }
       }
       console.log(workoutname)
@@ -134,24 +137,16 @@ export class ActivityPage implements OnInit {
         uid:      this.uid,
         DateType: newdatetype
       }
-      this.fireService.saveActivity(data).then(res=>{
+      this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid)
+      .collection(this.inputdate).doc(newdatetype).set(data).then(res=>{
         console.log("Activity saved")
         },err=>{
           console.log(this.Date)
           console.log(err);
         });
-
       this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid)
         .collection(this.inputdate).doc(this.inputdate+":"+workoutname).delete();
-      
-        /*this.fireService.saveActivity(temp).then(res=>{
-          console.log("Activity saved")
-          },err=>{
-            console.log(this.Date)
-            console.log(err);
-          });*/
-      
-        //console.log(temp)
+
       console.log("Your workout name has been changed to: "+ workoutNameChanges);
       this.editWorkoutName();
 
@@ -163,10 +158,10 @@ export class ActivityPage implements OnInit {
     editworkoutSets(){
       let workoutSetChanges = (document.getElementById("setnum") as HTMLInputElement).value;
       let navbar = document.getElementById("List").querySelectorAll('li');
-      let workoutname = navbar[1].innerHTML.split(': ')[1]
+      let workoutname = navbar[0].innerHTML.split(': ')[1]
       let updatedlist: Array<any> = []
-      for(var i = 1;i<navbar.length;i++){
-        if(i == 2){
+      for(var i = 0;i<navbar.length;i++){
+        if(i == 1){
           updatedlist.push("Sets: "+workoutSetChanges)
         }else{
           updatedlist.push(navbar[i].innerHTML)
@@ -186,12 +181,12 @@ export class ActivityPage implements OnInit {
       this.repsChange = !this.repsChange;
     }
     editworkoutReps(){
-      let workoutRepChanges = (document.getElementById("repnum") as HTMLInputElement).value;
       let navbar = document.getElementById("List").querySelectorAll('li');
-      let workoutname = navbar[1].innerHTML.split(': ')[1]
+      let workoutname = navbar[0].innerHTML.split(': ')[1]
+      let workoutRepChanges = (document.getElementById("repnum") as HTMLInputElement).value;
       let updatedlist: Array<any> = []
-      for(var i = 1;i<navbar.length;i++){
-        if(i == 3){
+      for(var i = 0;i<navbar.length;i++){
+        if(i == 2){
           updatedlist.push("Reps: "+workoutRepChanges)
         }else{
           updatedlist.push(navbar[i].innerHTML)
@@ -212,10 +207,10 @@ export class ActivityPage implements OnInit {
     editworkoutTime(){
       let workoutTimeChanges = (document.getElementById("timenum") as HTMLInputElement).value;
       let navbar = document.getElementById("List").querySelectorAll('li');
-      let workoutname = navbar[1].innerHTML.split(': ')[1]
+      let workoutname = navbar[0].innerHTML.split(': ')[1]
       let updatedlist: Array<any> = []
-      for(var i = 1;i<navbar.length;i++){
-        if(i == 4){
+      for(var i = 0;i<navbar.length;i++){
+        if(i == 3){
           updatedlist.push("Time: "+workoutTimeChanges)
         }else{
           updatedlist.push(navbar[i].innerHTML)
@@ -237,10 +232,10 @@ export class ActivityPage implements OnInit {
     editworkoutNote(){
       let workoutNoteChanges = (document.getElementById("note") as HTMLInputElement).value;
       let navbar = document.getElementById("List").querySelectorAll('li');
-      let workoutname = navbar[1].innerHTML.split(': ')[1]
+      let workoutname = navbar[0].innerHTML.split(': ')[1]
       let updatedlist: Array<any> = []
-      for(var i = 1;i<navbar.length;i++){
-        if(i == 5){
+      for(var i = 0;i<navbar.length;i++){
+        if(i == 4){
           updatedlist.push("Notes: "+workoutNoteChanges)
         }else{
           updatedlist.push(navbar[i].innerHTML)
@@ -259,7 +254,8 @@ export class ActivityPage implements OnInit {
 
     deletedata(){
       let navbar = document.getElementById("List").querySelectorAll('li');
-      var workoutName= navbar[1].innerHTML.split(': ')[1];
-      this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid).collection(this.inputdate).doc(this.inputdate+":"+workoutName).delete();
+      var workoutName= navbar[0].innerHTML.split(': ')[1];
+      this.firestore.collection("users").doc(this.uid).collection("activity").doc(this.uid)
+      .collection(this.inputdate).doc(this.inputdate+":"+workoutName).delete();
     }
 }
