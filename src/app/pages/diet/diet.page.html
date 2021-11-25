@@ -197,10 +197,12 @@
               <ion-row *ngIf="updateDietInfo">
     
                 <!-- update Meal name---- -->
-                <ion-row style="margin: auto;">        
-                 <strong style="font-size: 20px;">{{user.meal[0]}}</strong>
-                  <ion-button (click)='editMeal()' size="small">Edit Meal</ion-button>
-                  <br>
+                <ion-row style="margin: auto;">       
+                  <ion-row>
+                    <strong style="font-size: 20px;">{{user.meal[0]}}</strong>
+                    <ion-button (click)='editMeal()' size="small">Edit Meal</ion-button>
+                    <br>
+                  </ion-row> 
                   <ion-row *ngIf="updateMealName">
                     <ion-item>
                       <!-- <ion-input placeholder="New meal: " id="meal"></ion-input> -->
@@ -220,10 +222,12 @@
                 </ion-row> 
     
                 <!-- update Food -->
-                <ion-row style="margin: auto;">        
-                  <strong style="font-size: 20px;">{{user.meal[1]}}</strong>
-                  <ion-button (click)='editFood()' size="small">Edit Food</ion-button>
-                  <br>
+                <ion-row style="margin: auto;">  
+                  <ion-row>
+                    <strong style="font-size: 20px;">{{user.meal[1]}}</strong>
+                    <ion-button (click)='editFood()' size="small">Edit Food</ion-button>
+                    <br>
+                  </ion-row>      
                   <ion-row *ngIf="updateFood">
                     <ion-input placeholder="New food: " id="food"></ion-input>
                     <ion-button (click)='editFood()' color="danger" size="small">Cancel</ion-button>
@@ -232,10 +236,12 @@
                 </ion-row>
     
                 <!-- update Calories ---- -->
-                <ion-row style="margin: auto;">        
-                  <strong style="font-size: 20px;">{{user.meal[2]}}</strong>
-                  <ion-button (click)='editCalories()' size="small">Edit Calories</ion-button>
-                  <br>
+                <ion-row style="margin: auto;"> 
+                  <ion-row>
+                    <strong style="font-size: 20px;">{{user.meal[2]}}</strong>
+                    <ion-button (click)='editCalories()' size="small">Edit Calories</ion-button>
+                    <br>
+                  </ion-row>       
                   <ion-row *ngIf="updateCalories">
                     <ion-input placeholder="New calories: " id="calories"></ion-input>
                     <ion-button (click)='editCalories()' color="danger" size="small">Cancel</ion-button>
@@ -244,10 +250,12 @@
                 </ion-row>
     
                 <!-- update Protein---- -->
-                <ion-row style="margin: auto;">        
-                  <strong style="font-size: 20px;">{{user.meal[3]}}</strong>
-                  <ion-button (click)='editProtein()' size="small">Edit Protein</ion-button>
-                  <br>
+                <ion-row style="margin: auto;">   
+                  <ion-row>
+                    <strong style="font-size: 20px;">{{user.meal[3]}}</strong>
+                    <ion-button (click)='editProtein()' size="small">Edit Protein</ion-button>
+                    <br>
+                  </ion-row>     
                   <ion-row *ngIf="updateProtein">
                     <ion-input placeholder="New Time: " id="protein"></ion-input>
                     <ion-button (click)='editProtein()' color="danger" size="small">Cancel</ion-button>
@@ -256,10 +264,12 @@
                 </ion-row>
     
                 <!-- update Carbs ---- -->
-                <ion-row style="margin: auto;">        
-                  <strong style="font-size: 20px;">{{user.meal[4]}}</strong>
-                  <ion-button (click)='editCarbs()' size="small">Edit Carbs</ion-button>
-                  <br>
+                <ion-row style="margin: auto;">     
+                  <ion-row>
+                    <strong style="font-size: 20px;">{{user.meal[4]}}</strong>
+                    <ion-button (click)='editCarbs()' size="small">Edit Carbs</ion-button>
+                    <br>
+                  </ion-row>   
                   <ion-row *ngIf="updateCarbs">
                     <ion-input placeholder="New carbs: " id="carbs"></ion-input>
                     <ion-button (click)='editCarbs()' color="danger" size="small">Cancel</ion-button>
@@ -268,10 +278,12 @@
                 </ion-row>
     
                 <!-- update Fat ---- -->
-                <ion-row style="margin: auto;">        
-                  <strong style="font-size: 20px;">{{user.meal[5]}}</strong>
-                  <ion-button (click)='editFat()' size="small">Edit Fat</ion-button>
-                  <br>
+                <ion-row style="margin: auto;">      
+                  <ion-row>
+                    <strong style="font-size: 20px;">{{user.meal[5]}}</strong>
+                    <ion-button (click)='editFat()' size="small">Edit Fat</ion-button>
+                    <br>
+                  </ion-row>  
                   <ion-row *ngIf="updateFat">
                     <ion-input placeholder="New fat: " id="fat"></ion-input>
                     <ion-button (click)='editFat()' color="danger" size="small">Cancel</ion-button>

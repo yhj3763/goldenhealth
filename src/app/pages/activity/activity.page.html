@@ -65,10 +65,12 @@
             <ion-row *ngIf="updateActivityInfo">
 
               <!-- update workout name---- -->
-              <ion-row style="margin: auto;">        
-                <strong style="font-size: 20px;">{{user.Workout[0]}}</strong>
-                <ion-button (click)='editWorkoutName()' size="small">Edit Workout</ion-button>
-                <br>
+              <ion-row style="margin: auto;">    
+                <ion-row>
+                  <strong style="font-size: 20px;">{{user.Workout[0]}}</strong>
+                  <ion-button (click)='editWorkoutName()' size="small">Edit Workout</ion-button>
+                  <br>                  
+                </ion-row>       
                 <ion-row *ngIf="workoutChange">
                   <ion-input placeholder="New Workout Name: " id="workoutname"></ion-input>
                   <ion-button (click)='editWorkoutName()' color="danger" size="small">Cancel</ion-button>
@@ -77,10 +79,12 @@
               </ion-row>
   
               <!-- update sets -->
-              <ion-row style="margin: auto;">        
-                <strong style="font-size: 20px;">{{user.Workout[1]}}</strong>
-                <ion-button (click)='editSets()' size="small">Edit Sets</ion-button>
-                <br>
+              <ion-row style="margin: auto;">     
+                <ion-row>
+                  <strong style="font-size: 20px;">{{user.Workout[1]}}</strong>
+                  <ion-button (click)='editSets()' size="small">Edit Sets</ion-button>
+                  <br>
+                </ion-row>   
                 <ion-row *ngIf="setsChange">
                   <ion-input placeholder="New Set Num: " id="setnum"></ion-input>
                   <ion-button (click)='editSets()' color="danger" size="small">Cancel</ion-button>
@@ -89,10 +93,12 @@
               </ion-row>
   
               <!-- update reps---- -->
-              <ion-row style="margin: auto;">        
-                <strong style="font-size: 20px;">{{user.Workout[2]}}</strong>
-                <ion-button (click)='editReps()' size="small">Edit Reps</ion-button>
-                <br>
+              <ion-row style="margin: auto;">   
+                <ion-row>
+                  <strong style="font-size: 20px;">{{user.Workout[2]}}</strong>
+                  <ion-button (click)='editReps()' size="small">Edit Reps</ion-button>
+                  <br>
+                </ion-row>     
                 <ion-row *ngIf="repsChange">
                   <ion-input placeholder="New Rep Num: " id="repnum"></ion-input>
                   <ion-button (click)='editReps()' color="danger" size="small">Cancel</ion-button>
@@ -101,10 +107,12 @@
               </ion-row>
   
               <!-- update time---- -->
-              <ion-row style="margin: auto;">        
-                <strong style="font-size: 20px;">{{user.Workout[3]}}</strong>
-                <ion-button (click)='editTime()' size="small">Edit Time</ion-button>
-                <br>
+              <ion-row style="margin: auto;">
+                <ion-row> 
+                  <strong style="font-size: 20px;">{{user.Workout[3]}}</strong>
+                  <ion-button (click)='editTime()' size="small">Edit Time</ion-button>
+                  <br>
+                </ion-row>        
                 <ion-row *ngIf="timeChange">
                   <ion-input placeholder="New Time: " id="timenum"></ion-input>
                   <ion-button (click)='editTime()' color="danger" size="small">Cancel</ion-button>
@@ -113,10 +121,15 @@
               </ion-row>
   
               <!-- update notes---- -->
-              <ion-row style="margin: auto;">        
-                <strong style="font-size: 20px;">{{user.Workout[4]}}</strong>
+              <ion-row style="margin: auto;">
+                <ion-row>
+                  <strong style="font-size: 20px;">{{user.Workout[4]}}</strong>
+                  <ion-button (click)='editNotes()' size="small">Edit Notes</ion-button>
+                  <br>
+                </ion-row>        
+                <!-- <strong style="font-size: 10px;">{{user.Workout[4]}}</strong>
                 <ion-button (click)='editNotes()' size="small">Edit Notes</ion-button>
-                <br>
+                <br> -->
                 <ion-row *ngIf="notesChange">
                   <ion-input placeholder="New Notes: " id="note"></ion-input>
                   <ion-button (click)='editNotes()' color="danger" size="small">Cancel</ion-button>
@@ -129,8 +142,11 @@
         </ion-card-content>
       </ion-card>
     </div>
-    <ion-item>
-      <div id = "reccomendation"></div>
-    </ion-item>
+    <ion-card> 
+      <ion-item color="primary">
+        <div id = "reccomendation"></div>
+      </ion-item>
+    </ion-card>
+
 </ion-content>
 
