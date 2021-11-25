@@ -59,6 +59,7 @@ export class ActivityPage implements OnInit {
     console.log(this.inputdate);
     this.users = this.firestore.collection("users").doc(this.uid).
           collection("activity").doc(this.uid).collection(this.inputdate).valueChanges();
+    this.activity_reccomendation();
   }
 
   buildForm() {
