@@ -497,54 +497,78 @@ editdietFat(){
               label: 'Breakfast',
               data: [],
               backgroundColor: [
+                'rgba(209, 25, 19, 0.3)'
+              ],
+              borderColor: [
                 'rgb(209, 25, 19)'
               ],
-              maxBarThickness: 50,
+              borderWidth: 1,
+              maxBarThickness: 100,
               stack: 'Stack 0'
             },
             {
               label: 'Lunch',
               data: [],
               backgroundColor:[
+                'rgba(242, 242, 24, 0.3)'
+              ],
+              borderColor: [
                 'rgb(242, 242, 24)'
               ],
-              maxBarThickness: 50,
+              borderWidth: 1,
+              maxBarThickness: 100,
               stack: 'Stack 0'
             },
             {
               label: 'Dinner',
               data: [],
               backgroundColor:[
+                'rgba(325, 170, 90, 0.3)'
+              ],
+              borderColor: [
                 'rgb(325, 170, 90)'
               ],
-              maxBarThickness: 50,
+              borderWidth: 1,
+              maxBarThickness: 100,
               stack: 'Stack 0'
             },
             {
               label: 'Snacks',
               data: [],
               backgroundColor:[
+                'rgba(39, 245, 238, 0.3)'
+              ],
+              borderColor: [
                 'rgb(39, 245, 238)'
               ],
-              maxBarThickness: 50,
+              borderWidth: 1,
+              maxBarThickness: 100,
               stack: 'Stack 0'
             },
             {
               label: 'Workout',
               data: [],
               backgroundColor:[
+                'rgba(33, 196, 77, 0.3)'
+              ],
+              borderColor: [
                 'rgb(33, 196, 77)'
               ],
-              maxBarThickness: 50,
+              borderWidth: 1,
+              maxBarThickness: 100,
               stack: 'Stack 0'
             },
             {
               label: 'Targeted',
               data: [],
               backgroundColor:[
+                'rgba(400, 222, 80, 0.3)'
+              ],
+              borderColor: [
                 'rgb(400, 222, 80)'
               ],
-              maxBarThickness: 50,
+              borderWidth: 1,
+              maxBarThickness: 100,
               stack: 'Stack 1'
             }
           ]
