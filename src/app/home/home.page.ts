@@ -51,7 +51,7 @@ export class HomePage implements OnInit{
                     var BMI = (kgweight/(this.data['height']/100 * this.data['height']/100)).toFixed(2);
                     console.log(BMI); 
                     this.bmi = BMI;
-                    this.recommendation();
+                    
 
     }); 
 
@@ -63,7 +63,7 @@ export class HomePage implements OnInit{
   this.router.navigateByUrl('');
 }
 //not done , working on it 
-recommendation(){
+/*(){
   let myContainer = document.getElementById('recommdation') as HTMLInputElement;
   console.log("this"+this.bmi)
   console.log(14.00<this.bmi&&this.bmi<18.00)
@@ -78,13 +78,9 @@ recommendation(){
   }else if(30.00<=this.bmi&&this.bmi<40.00){
     myContainer.innerHTML = "You are considered Obese on the BMI scale. This has adverse health effects and can lead to Heart Disease, Diabetes, and many other health problems. Speak to your doctor to see whether or not you are at risk.      ";
   }else if(this.bmi>40.00){
-    myContainer.innerHTML = "You are considered Extremely Obese. You are at greater risk of health problems such as Heart Disease, High Blood Pressure, Diabetes, and many other health issues. Speak to your doctor as soon as possible.";
-  }else{
-    myContainer.innerHTML ="NONE"
-  }
-}
+    myContainer.innerHTML = "You are considered Extremely Obese. You are at greater risk of health problems such as Heart Disease, High Blood Pressure, Diabetes, and many other health issues. Speak to your doctor as soon 
 
-
+*/
 
 
   editpersonalinfo() {
