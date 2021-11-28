@@ -503,6 +503,7 @@ editdietFat(){
                 'rgb(209, 25, 19)'
               ],
               borderWidth: 1,
+              barPercentage: 0.5,
               maxBarThickness: 100,
               stack: 'Stack 0'
             },
@@ -516,6 +517,7 @@ editdietFat(){
                 'rgb(242, 242, 24)'
               ],
               borderWidth: 1,
+              barPercentage: 0.5,
               maxBarThickness: 100,
               stack: 'Stack 0'
             },
@@ -529,6 +531,7 @@ editdietFat(){
                 'rgb(325, 170, 90)'
               ],
               borderWidth: 1,
+              barPercentage: 0.5,
               maxBarThickness: 100,
               stack: 'Stack 0'
             },
@@ -542,6 +545,7 @@ editdietFat(){
                 'rgb(39, 245, 238)'
               ],
               borderWidth: 1,
+              barPercentage: 0.5,
               maxBarThickness: 100,
               stack: 'Stack 0'
             },
@@ -555,6 +559,7 @@ editdietFat(){
                 'rgb(33, 196, 77)'
               ],
               borderWidth: 1,
+              barPercentage: 0.5,
               maxBarThickness: 100,
               stack: 'Stack 0'
             },
@@ -568,6 +573,7 @@ editdietFat(){
                 'rgb(400, 222, 80)'
               ],
               borderWidth: 1,
+              barPercentage: 0.5,
               maxBarThickness: 100,
               stack: 'Stack 1'
             }
