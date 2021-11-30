@@ -360,8 +360,8 @@ editdietCalories(){
     .collection(this.inputdate).doc(this.inputdate+":"+MealType+":"+Foodname).update({
       meal:updatedlist,
     }); 
-
   console.log("Your Calories has been changed to: "+ CaloriesChange);
+  location.reload();
   this.editCalories();
 }
 
@@ -476,6 +476,8 @@ editdietFat(){
     var food= navbar[1].innerHTML.split(' : ')[1]
     this.firestore.collection("users").doc(this.uid).collection("diet").doc(this.uid)
     .collection(this.inputdate).doc(this.inputdate+":"+mealtype+":"+food).delete();
+    location.reload();
+
   }
 
 
